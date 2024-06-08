@@ -15,6 +15,10 @@ This plugin is designed and dependent on [Joint](https://www.unrealengine.com/ma
 
 After installing and launching the plugin, please check out the plugin contents and check out the **README** asset first.
 
+## Contents 
+You can get some basic nodes for Joint and also a sample level and assets for the explanations. Check out those to see how you can use Joint to make conversations.
+![Nodes](/RepoResources/Nodes.PNG) ![Sample](/RepoResources/Sample.PNG) ![SampleLevel](/RepoResources/SampleLevel.PNG)
+
 ## Supports
 We have [an official Discord support channel](https://discord.gg/DzNFax2aBS) for the plugin! you can freely come here and ask any question related to the plugin.
 Also, we will provide documentation for the plugin in the future. Please keep in touch.
