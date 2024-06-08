@@ -20,4 +20,4 @@ We have [an official Discord support channel](https://discord.gg/DzNFax2aBS) for
 Also, we will provide documentation for the plugin in the future. Please keep in touch.
 
 ## License
-This project is licensed under Apache License Version 2.0, Check out the [LICENSE](/LICENSE) file for further details.
+This project itself and the source codes and assets in this project are licensed under Apache License Version 2.0, Check out the [LICENSE](/LICENSE) file for further details.
