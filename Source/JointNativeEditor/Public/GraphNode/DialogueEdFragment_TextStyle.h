@@ -1,0 +1,57 @@
+//Copyright 2022~2024 DevGrain. All Rights Reserved.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Node/SubNode/DialogueEdGraphNode_Fragment.h"
+#include "DialogueEdFragment_TextStyle.generated.h"
+
+class UVoltAnimationManager;
+class SScrollBox;
+/**
+ * 
+ */
+UCLASS()
+class JOINTNATIVEEDITOR_API UDialogueEdFragment_TextStyle : public UDialogueEdGraphNode_Fragment
+{
+	GENERATED_BODY()
+
+public:
+
+	UDialogueEdFragment_TextStyle();
+
+public:
+
+	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
+
+public:
+	
+	virtual FLinearColor GetNodeTitleColor() const override;
+
+public:
+
+	virtual bool CanHaveSubNode() const override;
+
+
+public:
+
+	virtual void ModifyGraphNodeSlate() override;
+
+	virtual void OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent, const FString& PropertyName) override;
+
+	void UpdateSlate();
+
+	virtual bool CanHaveBreakpoint() const override;
+
+public:
+
+	virtual FLinearColor GetNodeBodyTintColor() const override;
+
+public:
+
+	/**
+	 * A box that holds the style representing slate.
+	 */
+	TSharedPtr<SVerticalBox> StyleBox;
+	
+};

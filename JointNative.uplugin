@@ -1,0 +1,45 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Joint Native",
+	"Description": "The basic contents for Joint, including nodes, widget, Use-cases and samples for various project styles.",
+	"Category": "Conversation",
+	"CreatedBy": "DevGrain",
+	"CreatedByURL": "",
+	"DocsURL": "https://gggrain.github.io/docs/guide_docs/intro",
+	"MarketplaceURL": "",
+	"SupportURL": "https://discord.gg/DzNFax2aBS",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "JointNative",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "JointNativeEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Joint",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		}
+	]
+}
