@@ -17,7 +17,9 @@ After installing and launching the plugin, please check out the plugin contents 
 
 ## Contents 
 You can get some basic nodes for Joint and also a sample level and assets for the explanations. Check out those to see how you can use Joint to make conversations.
-![Nodes](/RepoResources/Nodes.PNG) ![Sample](/RepoResources/Sample.PNG) ![SampleLevel](/RepoResources/SampleLevel.PNG)
+![Nodes](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/470095f4-9af4-435f-a766-b546b8eb69f6)
+![Sample](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/c313cb70-8f13-455e-80a0-6323adb58833)
+![SampleLevel](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/f779d7aa-648a-44b9-9bef-6534afd6341c)
 
 ## Supports
 We have [an official Discord support channel](https://discord.gg/DzNFax2aBS) for the plugin! you can freely come here and ask any question related to the plugin.
