@@ -3,7 +3,7 @@
 
 #include "DF_Participant.h"
 
-#include "SubSystem/JointSubsystem.h"
+#include "JointNativeFunctionLibrary.h"
 
 UDF_Participant::UDF_Participant()
 {
@@ -14,7 +14,7 @@ void UDF_Participant::OnNodeBeginPlay_Implementation()
 {
 	if(!ParticipantComponentInstance && bAllowCollectingParticipantComponentOnWorldAutomatically)
 	{
-		ParticipantComponentInstance = UJointSubsystem::FindFirstParticipantComponent(GetWorld(),ParticipantTag);
+		ParticipantComponentInstance = UJointNativeFunctionLibrary::FindFirstParticipantComponent(GetWorld(),ParticipantTag);
 	}
 	
 	Super::OnNodeBeginPlay_Implementation();

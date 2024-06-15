@@ -3,6 +3,7 @@
 
 #include "DF_LevelSequence.h"
 #include "LevelSequenceActor.h"
+#include "LevelSequencePlayer.h"
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
 #include "Kismet/KismetSystemLibrary.h"

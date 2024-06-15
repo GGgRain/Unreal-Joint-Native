@@ -66,8 +66,7 @@ void UDialogueEdFragment_Branch::ReallocatePins()
 
 	if (CastedNodeInstance == nullptr) return;
 
-	//Remove or restore False node by whether there is another branch node available. 
-
+	//Collect all the False pins by whether they are actually implemented or not.
 	TArray<FDialogueEdPinData> NotImplementedFalsePinData;
 	TArray<FDialogueEdPinData> FalsePinData;
 
