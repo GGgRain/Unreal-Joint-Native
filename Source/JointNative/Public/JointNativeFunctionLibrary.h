@@ -51,5 +51,15 @@ public:
 	static TArray<class UDialogueParticipantComponent*> GetAllParticipantComponents(
 		UObject* WorldContextObject
 	);
+
+
+public:
+	
+	UFUNCTION(BlueprintCallable, Category = "Projection", meta=(WorldContext="WorldContextObject"))
+	static void ProjectWorldPositionToScreenPosition(
+		const UObject* WorldContextObject,
+		const FVector& InWorldPosition,
+		FVector2D& ScreenPos
+	);
 	
 };

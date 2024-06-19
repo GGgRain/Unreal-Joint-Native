@@ -33,7 +33,7 @@ public:
 	virtual void OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent, const FString& PropertyName) override;
 	
 	void UpdateThumbnail();
-	
+
 public:
 
 	TSharedPtr<SBox> AssetBox;
