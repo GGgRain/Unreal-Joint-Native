@@ -25,7 +25,7 @@ public:
 
 	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
 	
-	virtual FReply UpdateError() override;
+	virtual void OnCompileNode() override;
 
 public:
 

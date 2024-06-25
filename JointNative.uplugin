@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
-	"Version": 3,
-	"VersionName": "1.2.0",
+	"Version": 4,
+	"VersionName": "1.3.0",
 	"FriendlyName": "Joint Native",
-	"Description": "The basic contents for Joint, including nodes, widget, Use-cases and samples for various project styles.",
+	"Description": "The basic contents for Joint, including nodes, widgets, Use-cases and samples for various project styles.",
 	"Category": "Conversation",
 	"CreatedBy": "DevGrain",
 	"CreatedByURL": "https://github.com/GGgRain",

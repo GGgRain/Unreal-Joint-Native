@@ -3,6 +3,8 @@
 
 #include "DialogueEdFragment_Branch.h"
 
+#include "DialogueManager.h"
+#include "Misc/UObjectToken.h"
 #include "Node/DF_Branch.h"
 #include "Node/DF_Condition.h"
 
@@ -26,30 +28,26 @@ TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Branch::SupportedNodeClass()
 	return UDF_Branch::StaticClass();
 }
 
-FReply UDialogueEdFragment_Branch::UpdateError()
+void UDialogueEdFragment_Branch::OnCompileNode()
 {
+
+	Super::OnCompileNode();
+	
 	if (GetCastedNodeInstance())
 	{
 		if (!GetCastedNodeInstance()->FindFragmentByClass(UDF_Condition::StaticClass()))
 		{
-			ErrorMsg =
-				"No condition node has been attached.\nBranch node must have one condition fragment as sub node to work properly.\nIt will always return the nodes at the true pins if it has been played.";
-
-			bHasCompilerMessage = true;
-
-			ErrorType = EMessageSeverity::Info;
-
-			return FReply::Handled();
+			TSharedRef<FTokenizedMessage> TokenizedMessage = FTokenizedMessage::Create(EMessageSeverity::Info);
+			TokenizedMessage->AddToken(FAssetNameToken::Create(GetDialogueManager() ? GetDialogueManager()->GetName() : "NONE"));
+			TokenizedMessage->AddToken(FTextToken::Create(FText::FromString(":")));
+			TokenizedMessage->AddToken(FUObjectToken::Create(this));
+			TokenizedMessage->AddToken(FTextToken::Create(LOCTEXT("Compile_NoCondition","No condition node has been attached. Branch node must have one condition fragment as sub node to work properly. It will always return the nodes at the true pins if it has been played.")) );
+			TokenizedMessage.Get().SetMessageLink(FUObjectToken::Create(this));
+			
+			CompileMessages.Add(TokenizedMessage);
+			
 		}
 	}
-
-	ErrorMsg.Empty();
-
-	bHasCompilerMessage = false;
-
-	ErrorType = 0;
-
-	return Super::UpdateError();
 }
 
 void UDialogueEdFragment_Branch::AllocateDefaultPins()
