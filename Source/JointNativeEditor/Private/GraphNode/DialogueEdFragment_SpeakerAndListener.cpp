@@ -28,7 +28,7 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 	const TAttribute<EVisibility> SpeakersBoxVisibility_Attr = TAttribute<EVisibility>::Create(
 		TAttribute<EVisibility>::FGetter::CreateLambda([this]
 		{
-			if (SpeakersBox.Get()->GetChildren()->Num() > 0) return EVisibility::Visible;
+			if (SpeakersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
 
 			return EVisibility::Collapsed;
 		}));
@@ -36,7 +36,7 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 	const TAttribute<EVisibility> ChevronVisibility_Attr = TAttribute<EVisibility>::Create(
 		TAttribute<EVisibility>::FGetter::CreateLambda([this]
 		{
-			if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::Visible;
+			if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
 
 			return EVisibility::Collapsed;
 		}));
@@ -44,13 +44,13 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 	const TAttribute<EVisibility> ListenersBoxVisibility_Attr = TAttribute<EVisibility>::Create(
 		TAttribute<EVisibility>::FGetter::CreateLambda([this]
 		{
-			if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::Visible;
+			if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
 
 			return EVisibility::Collapsed;
 		}));
 
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	NodeSlate->CenterContentBox->AddSlot()
 		.AutoHeight()
@@ -87,7 +87,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	SpeakersBox->ClearChildren();
 	ListenersBox->ClearChildren();
@@ -117,6 +117,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 		ListenersBox->AddSlot()
 		[
 			SNew(SDialogueNodePointerSlate)
+			.Visibility(EVisibility::SelfHitTestInvisible)
 			.GraphContextObject(this)
 			.DisplayName(DisplayText_Attr)
 			.PointerToStructure(&Listener)
@@ -146,6 +147,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 		SpeakersBox->AddSlot()
 		[
 			SNew(SDialogueNodePointerSlate)
+			.Visibility(EVisibility::SelfHitTestInvisible)
 			.GraphContextObject(this)
 			.DisplayName(DisplayText_Attr)
 			.PointerToStructure(&Speaker)

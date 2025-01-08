@@ -10,7 +10,7 @@
 //VOLT
 
 #include "VoltAnimationManager.h"
-#include "Animation/Volt_ASA_Emerge.h"
+#include "VoltDecl.h"
 #include "Module/Volt_ASM_InterpRenderOpacity.h"
 #include "Module/Volt_ASM_InterpWidgetTransform.h"
 
@@ -50,13 +50,12 @@ void UDialogueEdFragment_Participant::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	ParticipantBox = SNew(SVerticalBox);
+	ParticipantBox = SNew(SVerticalBox).Visibility(EVisibility::SelfHitTestInvisible);
 
 	NodeSlate->CenterContentBox->AddSlot()
 		.HAlign(HAlign_Fill)
-		//.VAlign(VAlign_Fill)
 		.Padding(FJointEditorStyle::Margin_Frame)
 		[
 			ParticipantBox.ToSharedRef()
@@ -81,7 +80,7 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 	if (!GetGraphNodeSlate().IsValid()) return;
 
 	const TSharedPtr<SDialogueGraphNodeSubNodeBase> NodeSlate = StaticCastSharedPtr<SDialogueGraphNodeSubNodeBase>(
-		GetGraphNodeSlate());
+		GetGraphNodeSlate().Pin());
 
 	UDF_Participant* CastedNodeInstance = GetCastedNodeInstance<UDF_Participant>();
 
@@ -89,6 +88,7 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 
 	TSharedPtr<SWidget> ConditionSlate =
 		SNew(SBorder)
+		.Visibility(EVisibility::HitTestInvisible)
 		.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
 		.BorderBackgroundColor(GetNodeBodyTintColor())
 		.Padding(FJointEditorStyle::Margin_Border)
@@ -127,31 +127,22 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 				]
 			]
 		];
+	const UVoltAnimation* Anim = VOLT_MAKE_ANIMATION(UVoltAnimation)
+		(
+			VOLT_MAKE_MODULE(UVolt_ASM_InterpRenderOpacity)
+			.TargetOpacity(1)
+			.RateBasedInterpSpeed(10),
+			VOLT_MAKE_MODULE(UVolt_ASM_InterpWidgetTransform)
+			.StartWidgetTransform(FWidgetTransform(
+			FVector2D::ZeroVector,
+			FVector2D(0.9, 0.9),
+			FVector2D::ZeroVector,
+			0))
+			.RateBasedInterpSpeed(10)
+		);
+	
+	VOLT_PLAY_ANIM(ConditionSlate, Anim);
 
-
-	UVolt_ASA_Emerge* Anim_Emerge = VOLT_GET_ANIMATION<UVolt_ASA_Emerge>(UVolt_ASA_Emerge::StaticClass());
-
-	if (Anim_Emerge)
-	{
-		if (UVolt_ASM_InterpRenderOpacity* OpacityModule = Anim_Emerge->GetModuleForClass<
-			UVolt_ASM_InterpRenderOpacity>())
-		{
-			OpacityModule->InterpSpeed = 10;
-		}
-
-		if (UVolt_ASM_InterpWidgetTransform* WidgetTransformModule = Anim_Emerge->GetModuleForClass<
-			UVolt_ASM_InterpWidgetTransform>())
-		{
-			WidgetTransformModule->StartWidgetTransform = FWidgetTransform(
-		FVector2D::ZeroVector,
-		FVector2D(0.9, 0.9),
-		FVector2D::ZeroVector,
-		0);
-			WidgetTransformModule->InterpSpeed = 10;
-		}
-
-		VOLT_PLAY_ANIM(NodeSlate->GetAnimationManager(), ConditionSlate, Anim_Emerge);
-	}
 
 	ParticipantBox->ClearChildren();
 

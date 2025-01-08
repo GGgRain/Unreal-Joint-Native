@@ -23,7 +23,7 @@ void UDialogueEdFragment_Sequence::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	NodeSlate->NameBox->AddSlot()
 	.AutoWidth()
@@ -32,6 +32,7 @@ void UDialogueEdFragment_Sequence::ModifyGraphNodeSlate()
 	.Padding(FJointEditorStyle::Margin_Border)
 	[
 		SNew(SBox)
+		.Visibility(EVisibility::SelfHitTestInvisible)
 		.WidthOverride(16)
 		.HeightOverride(16)
 		[

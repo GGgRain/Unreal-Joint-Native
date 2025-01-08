@@ -28,13 +28,14 @@ TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Text::SupportedNodeClass()
 
 void UDialogueEdFragment_Text::ModifyGraphNodeSlate()
 {
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	NodeSlate->CenterContentBox->AddSlot()
 		.HAlign(HAlign_Fill)
 		.VAlign(VAlign_Fill)
 		[
 			SAssignNew(ContextTextEditorContainer, SVerticalBox)
+			.Visibility(EVisibility::SelfHitTestInvisible)
 		];
 
 	UpdateSlate();
@@ -47,7 +48,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 	
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate();
+	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>();
 
@@ -87,6 +88,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 		.VAlign(VAlign_Fill)
 		[
 			SAssignNew(ContextTextEditor, SContextTextEditor)
+			.Visibility(EVisibility::SelfHitTestInvisible)
 			.Text(ContextText_Attr)
 			.TableToEdit(TableToEdit_Attr)
 			.bUseStyling(bUseStyler_Attr)
