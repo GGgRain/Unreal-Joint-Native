@@ -20,8 +20,9 @@
  * So you can create simple if-else branching with it.
  *
  * It will not return any of the nodes if it was not played.
+ * Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead.
  */
-UCLASS(Category = "Joint|Native|Core|Flow")
+UCLASS(Category = "Joint|Native|Core|Flow", Hidden)
 class JOINTNATIVE_API UDF_Branch: public UDialogueFragment
 {
 	GENERATED_BODY()
