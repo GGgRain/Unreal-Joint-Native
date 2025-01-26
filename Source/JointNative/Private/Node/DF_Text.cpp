@@ -11,12 +11,12 @@ UDF_Text::UDF_Text()
 	TextStyleInstance.AllowedType.Add(UDF_TextStyle::StaticClass());
 	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Maximum;
 
-	bUseSpecifiedGraphNodeBodyColor = true;
-	NodeBodyColor = FLinearColor(
-	4.4f / 255.f,
-	4.4f / 255.f,
-	4.8f / 255.f,
-	255.f / 255.f);
+	// bUseSpecifiedGraphNodeBodyColor = false;
+	// NodeBodyColor = FLinearColor(
+	// 4.4f / 255.f,
+	// 4.4f / 255.f,
+	// 5.1f / 255.f,
+	// 255.f / 255.f);
 	
 #endif
 }

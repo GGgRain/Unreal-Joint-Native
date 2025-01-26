@@ -7,12 +7,14 @@
 
 UDF_Participant::UDF_Participant()
 {
-	bUseSpecifiedGraphNodeBodyColor = true;
-	NodeBodyColor = FLinearColor(
-	4.4f / 255.f,
-	4.4f / 255.f,
-	4.8f / 255.f,
-	255.f / 255.f);
+#if WITH_EDITORONLY_DATA
+	// bUseSpecifiedGraphNodeBodyColor = true;
+	// NodeBodyColor = FLinearColor(
+	// 4.4f / 255.f,
+	// 4.4f / 255.f,
+	// 4.8f / 255.f,
+	// 255.f / 255.f);
+#endif
 }
 
 void UDF_Participant::OnNodeBeginPlay_Implementation()
