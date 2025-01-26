@@ -5,13 +5,13 @@
 
 UDF_TextStyle::UDF_TextStyle()
 {
-	//NodeTags.AddTag(SDS_NodeTag_Context);
 
-	//Context nodes can not have context node as child.
-	//SubNodeTagBlacklist.AddTag(SDS_NodeTag_Context);
+#if WITH_EDITORONLY_DATA
 
-	//Only sub nodes that are designed to be used with the context nodes are allowed.
-	//SubNodeTagWhiteList.AddTag(SDS_NodeTag_WithContext);
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(0.00, 0.0,0.00, 0.700000);
+	
+#endif
 	
 }
 

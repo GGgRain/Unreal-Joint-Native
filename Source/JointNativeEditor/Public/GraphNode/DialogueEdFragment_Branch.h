@@ -43,8 +43,4 @@ public:
 
 	TSharedPtr<SScrollBox> ConditionList;
 
-public:
-
-	virtual FLinearColor GetNodeTitleColor() const override;
-
 };

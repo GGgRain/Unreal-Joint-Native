@@ -7,7 +7,12 @@
 
 UDF_Participant::UDF_Participant()
 {
-
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(
+	4.4f / 255.f,
+	4.4f / 255.f,
+	4.8f / 255.f,
+	255.f / 255.f);
 }
 
 void UDF_Participant::OnNodeBeginPlay_Implementation()

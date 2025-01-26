@@ -14,9 +14,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDFSelectSelectionChanged, const UD
  * 
  * One select node means one option on the branching.
  * When bIsSelected is true, it will return the following next nodes for this node on the SelectNextNodes().
- * This node itself doesn't have any actions by itself. You have to check out how the other nodes related to the select node use this node to see how they actually halt the dialogue playback and implement the selection actions.
+ * 
+ * This node itself doesn't have any actions by itself. (It only implement buttons) You have to check out how the other nodes related to the select node use this node to see how they actually halt the dialogue playback and implement the selection actions. (especially DF_ServerClient_Vote)
  * 
  * You can attach some sub nodes for the select nodes and parse it to display some additional data for the widgets or etc. See how the sample widget for the Joint utilize the DF_Text on the select node like.
+ * This node will be depreciated eventually and will be replaced with BP version, but not today.
  */
 
 UCLASS(Category = "Joint|Native|Flow")

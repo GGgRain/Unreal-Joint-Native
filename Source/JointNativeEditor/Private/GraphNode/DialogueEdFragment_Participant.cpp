@@ -22,22 +22,10 @@ UDialogueEdFragment_Participant::UDialogueEdFragment_Participant()
 	NodeHeight = 200;
 }
 
-FLinearColor UDialogueEdFragment_Participant::GetNodeTitleColor() const
-{
-	return FLinearColor(0.06f, 0.2f, 0.25f);
-}
-
 FText UDialogueEdFragment_Participant::GetNodeTitle(ENodeTitleType::Type TitleType) const
 {
 	return Super::GetNodeTitle(TitleType);
 	//return FText::GetEmpty();
-}
-
-FLinearColor UDialogueEdFragment_Participant::GetNodeBodyTintColor() const
-{
-	if (ParentNode && Cast<UDialogueEdFragment_Participant>(ParentNode)) return FJointEditorStyle::Color_Normal;
-
-	return Super::GetNodeBodyTintColor();
 }
 
 TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Participant::SupportedNodeClass()
@@ -52,16 +40,19 @@ void UDialogueEdFragment_Participant::ModifyGraphNodeSlate()
 
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	ParticipantBox = SNew(SVerticalBox).Visibility(EVisibility::SelfHitTestInvisible);
+	if(NodeSlate && NodeSlate->CenterContentBox)
+	{
+		ParticipantBox = SNew(SVerticalBox).Visibility(EVisibility::SelfHitTestInvisible);
 
-	NodeSlate->CenterContentBox->AddSlot()
-		.HAlign(HAlign_Fill)
-		.Padding(FJointEditorStyle::Margin_Frame)
-		[
-			ParticipantBox.ToSharedRef()
-		];
+		NodeSlate->CenterContentBox->AddSlot()
+			.HAlign(HAlign_Fill)
+			.Padding(FJointEditorStyle::Margin_Frame)
+			[
+				ParticipantBox.ToSharedRef()
+			];
 
-	UpdateSlate();
+		UpdateSlate();
+	}
 }
 
 void UDialogueEdFragment_Participant::OnNodeInstancePropertyChanged(
@@ -82,76 +73,79 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 	const TSharedPtr<SDialogueGraphNodeSubNodeBase> NodeSlate = StaticCastSharedPtr<SDialogueGraphNodeSubNodeBase>(
 		GetGraphNodeSlate().Pin());
 
-	UDF_Participant* CastedNodeInstance = GetCastedNodeInstance<UDF_Participant>();
+	if(NodeSlate && NodeSlate->CenterContentBox)
+	{
+		UDF_Participant* CastedNodeInstance = GetCastedNodeInstance<UDF_Participant>();
 
-	if (CastedNodeInstance == nullptr) return;
+		if (CastedNodeInstance == nullptr) return;
 
-	TSharedPtr<SWidget> ConditionSlate =
-		SNew(SBorder)
-		.Visibility(EVisibility::HitTestInvisible)
-		.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
-		.BorderBackgroundColor(GetNodeBodyTintColor())
-		.Padding(FJointEditorStyle::Margin_Border)
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Center)
-		[
+		TSharedPtr<SWidget> ConditionSlate =
 			SNew(SBorder)
-			.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Empty"))
-			.Padding(FMargin(0))
-			.HAlign(HAlign_Center)
+			.Visibility(EVisibility::HitTestInvisible)
+			.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
+			.BorderBackgroundColor(GetNodeBodyTintColor())
+			.Padding(FJointEditorStyle::Margin_Border)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Center)
 			[
-				SNew(SHorizontalBox)
-				+ SHorizontalBox::Slot()
-				.AutoWidth()
-				//.HAlign(HAlign_Right)
-				.VAlign(VAlign_Center)
-				.Padding(FJointEditorStyle::Margin_Frame)
+				SNew(SBorder)
+				.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Empty"))
+				.Padding(FMargin(0))
+				.HAlign(HAlign_Center)
 				[
-					SNew(SBox)
-					.HeightOverride(16)
-					.WidthOverride(16)
+					SNew(SHorizontalBox)
+					+ SHorizontalBox::Slot()
+					.AutoWidth()
+					//.HAlign(HAlign_Right)
+					.VAlign(VAlign_Center)
+					.Padding(FJointEditorStyle::Margin_Frame)
 					[
-						SNew(SImage)
-						.Image(FJointEditorStyle::GetUEEditorSlateStyleSet().GetBrush("ShowFlagsMenu.SubMenu.Developer"))
+						SNew(SBox)
+						.HeightOverride(16)
+						.WidthOverride(16)
+						[
+							SNew(SImage)
+							.Image(FJointEditorStyle::GetUEEditorSlateStyleSet().GetBrush("ShowFlagsMenu.SubMenu.Developer"))
+						]
+					]
+					+ SHorizontalBox::Slot()
+					.AutoWidth()
+					.VAlign(VAlign_Center)
+					[
+
+						SNew(STextBlock)
+						.Justification(ETextJustify::Center)
+						.Text(FText::FromString(CastedNodeInstance->ParticipantTag.ToString()))
+
 					]
 				]
-				+ SHorizontalBox::Slot()
-				.AutoWidth()
-				.VAlign(VAlign_Center)
-				[
-
-					SNew(STextBlock)
-					.Justification(ETextJustify::Center)
-					.Text(FText::FromString(CastedNodeInstance->ParticipantTag.ToString()))
-
-				]
-			]
-		];
-	const UVoltAnimation* Anim = VOLT_MAKE_ANIMATION(UVoltAnimation)
-		(
-			VOLT_MAKE_MODULE(UVolt_ASM_InterpRenderOpacity)
-			.TargetOpacity(1)
-			.RateBasedInterpSpeed(10),
-			VOLT_MAKE_MODULE(UVolt_ASM_InterpWidgetTransform)
-			.StartWidgetTransform(FWidgetTransform(
-			FVector2D::ZeroVector,
-			FVector2D(0.9, 0.9),
-			FVector2D::ZeroVector,
-			0))
-			.RateBasedInterpSpeed(10)
-		);
+			];
+		const UVoltAnimation* Anim = VOLT_MAKE_ANIMATION(UVoltAnimation)
+			(
+				VOLT_MAKE_MODULE(UVolt_ASM_InterpRenderOpacity)
+				.TargetOpacity(1)
+				.RateBasedInterpSpeed(10),
+				VOLT_MAKE_MODULE(UVolt_ASM_InterpWidgetTransform)
+				.StartWidgetTransform(FWidgetTransform(
+				FVector2D::ZeroVector,
+				FVector2D(0.9, 0.9),
+				FVector2D::ZeroVector,
+				0))
+				.RateBasedInterpSpeed(10)
+			);
 	
-	VOLT_PLAY_ANIM(ConditionSlate, Anim);
+		VOLT_PLAY_ANIM(ConditionSlate, Anim);
 
 
-	ParticipantBox->ClearChildren();
+		ParticipantBox->ClearChildren();
 
-	ParticipantBox->AddSlot()
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
-		[
-			ConditionSlate.ToSharedRef()
-		];
+		ParticipantBox->AddSlot()
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			[
+				ConditionSlate.ToSharedRef()
+			];
+	}
 }
 
 

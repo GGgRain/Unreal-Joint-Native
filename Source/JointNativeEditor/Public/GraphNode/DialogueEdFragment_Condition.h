@@ -27,8 +27,6 @@ public:
 
 public:
 	
-	virtual FLinearColor GetNodeTitleColor() const override;
-
 	virtual void ModifyGraphNodeSlate() override;
 
 	

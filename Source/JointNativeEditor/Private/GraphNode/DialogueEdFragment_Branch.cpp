@@ -18,11 +18,6 @@ UDialogueEdFragment_Branch::UDialogueEdFragment_Branch()
 	NodeHeight = 200;
 }
 
-FLinearColor UDialogueEdFragment_Branch::GetNodeTitleColor() const
-{
-	return FLinearColor(0.1, 0.1, 0.1);
-}
-
 TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Branch::SupportedNodeClass()
 {
 	return UDF_Branch::StaticClass();

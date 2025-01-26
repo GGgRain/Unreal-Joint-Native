@@ -30,71 +30,78 @@ void UDialogueEdFragment_Text::ModifyGraphNodeSlate()
 {
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	NodeSlate->CenterContentBox->AddSlot()
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
-		[
-			SAssignNew(ContextTextEditorContainer, SVerticalBox)
-			.Visibility(EVisibility::SelfHitTestInvisible)
-		];
+	if(NodeSlate && NodeSlate->CenterContentBox)
+	{
+		NodeSlate->CenterContentBox->AddSlot()
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			[
+				SAssignNew(ContextTextEditorContainer, SVerticalBox)
+				.Visibility(EVisibility::SelfHitTestInvisible)
+			];
+	}
 
 	UpdateSlate();
 }
 
 void UDialogueEdFragment_Text::UpdateSlate()
 {
-
-	ContextTextEditorContainer->ClearChildren();
 	
 	if (!GetGraphNodeSlate().IsValid()) return;
 
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>();
-
-	if (CastedNode == nullptr) return;
-
-	const TAttribute<FText> ContextText_Attr = TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateLambda([this]
+	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
-		if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) return CastedNode->Text;
+		ContextTextEditorContainer->ClearChildren();
 
-		return FText::GetEmpty();
-	}));
+		
+		UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>();
 
-	const TAttribute<UDataTable*> TableToEdit_Attr = TAttribute<UDataTable*>::Create(
-		TAttribute<UDataTable*>::FGetter::CreateLambda([this]
+		if (CastedNode == nullptr) return;
+
+		const TAttribute<FText> ContextText_Attr = TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateLambda([this]
+		{
+			if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) return CastedNode->Text;
+
+			return FText::GetEmpty();
+		}));
+
+		const TAttribute<UDataTable*> TableToEdit_Attr = TAttribute<UDataTable*>::Create(
+			TAttribute<UDataTable*>::FGetter::CreateLambda([this]
+			{
+				UDataTable* Value = nullptr;
+
+				if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent();
+				
+				return Value;
+			}));
+
+		const TAttribute<bool> bUseStyler_Attr = TAttribute<bool>::Create(
+		TAttribute<bool>::FGetter::CreateLambda([this]
 		{
 			UDataTable* Value = nullptr;
 
 			if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent();
+
+			return ((Value != nullptr) ? true : false);
 			
-			return Value;
 		}));
 
-	const TAttribute<bool> bUseStyler_Attr = TAttribute<bool>::Create(
-	TAttribute<bool>::FGetter::CreateLambda([this]
-	{
-		UDataTable* Value = nullptr;
-
-		if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent();
-
-		return ((Value != nullptr) ? true : false);
-		
-	}));
-
-	ContextTextEditorContainer->AddSlot()
-		.AutoHeight()
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
-		[
-			SAssignNew(ContextTextEditor, SContextTextEditor)
-			.Visibility(EVisibility::SelfHitTestInvisible)
-			.Text(ContextText_Attr)
-			.TableToEdit(TableToEdit_Attr)
-			.bUseStyling(bUseStyler_Attr)
-			.OnTextChanged_UObject(this, &UDialogueEdFragment_Text::OnTextChange)
-			.OnTextCommitted_UObject(this, &UDialogueEdFragment_Text::OnTextCommitted)
-		];
+		ContextTextEditorContainer->AddSlot()
+			.AutoHeight()
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			[
+				SAssignNew(ContextTextEditor, SContextTextEditor)
+				.Visibility(EVisibility::SelfHitTestInvisible)
+				.Text(ContextText_Attr)
+				.TableToEdit(TableToEdit_Attr)
+				.bUseStyling(bUseStyler_Attr)
+				.OnTextChanged_UObject(this, &UDialogueEdFragment_Text::OnTextChange)
+				.OnTextCommitted_UObject(this, &UDialogueEdFragment_Text::OnTextCommitted)
+			];
+	}
 }
 
 void UDialogueEdFragment_Text::OnTextChange(const FText& Text)
@@ -172,11 +179,6 @@ void UDialogueEdFragment_Text::OnTextCommitted(const FText& Text, ETextCommit::T
 
 		bHasTransaction = false;
 	}
-}
-
-FLinearColor UDialogueEdFragment_Text::GetNodeTitleColor() const
-{
-	return FLinearColor(0.03, 0.03, 0.05, 1);
 }
 
 void UDialogueEdFragment_Text::OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent,

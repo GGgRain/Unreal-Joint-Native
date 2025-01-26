@@ -23,9 +23,5 @@ public:
 	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
 
 	virtual void ModifyGraphNodeSlate() override;
-
-public:
-	
-	virtual FLinearColor GetNodeTitleColor() const override;
 	
 };

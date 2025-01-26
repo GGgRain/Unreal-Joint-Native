@@ -5,6 +5,15 @@
 
 UDF_Select::UDF_Select()
 {
+
+#if WITH_EDITORONLY_DATA
+
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(0.4f, 0.2f, 0.5f, 0.400000);
+	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Stow;
+
+
+#endif
 	
 }
 

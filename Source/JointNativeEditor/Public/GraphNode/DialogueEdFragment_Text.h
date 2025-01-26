@@ -44,10 +44,6 @@ public:
 	bool bHasTransaction = false;
 
 public:
-	
-	virtual FLinearColor GetNodeTitleColor() const override;
-
-public:
 
 	virtual void OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent, const FString& PropertyName) override;
 	

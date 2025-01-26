@@ -25,29 +25,28 @@ void UDialogueEdFragment_Sequence::ModifyGraphNodeSlate()
 
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	NodeSlate->NameBox->AddSlot()
-	.AutoWidth()
-	.HAlign(HAlign_Right)
-	.VAlign(VAlign_Center)
-	.Padding(FJointEditorStyle::Margin_Border)
-	[
-		SNew(SBox)
-		.Visibility(EVisibility::SelfHitTestInvisible)
-		.WidthOverride(16)
-		.HeightOverride(16)
+	if(NodeSlate && NodeSlate->NameBox)
+	{
+		NodeSlate->NameBox->AddSlot()
+		.AutoWidth()
+		.HAlign(HAlign_Right)
+		.VAlign(VAlign_Center)
+		.Padding(FJointEditorStyle::Margin_Border)
 		[
-			SNew(SImage)
-			.Image(FJointEditorStyle::GetUEEditorSlateStyleSet().GetBrush("TimelineEditor.Replicated"))
-			.ToolTipText(LOCTEXT("AsynchoronousMessage","This node's action is asynchoronous.\nThe execution of the sub nodes of this node will not follow the flow of the dialogue."))
-		]
-	];
+			SNew(SBox)
+			.Visibility(EVisibility::SelfHitTestInvisible)
+			.WidthOverride(16)
+			.HeightOverride(16)
+			[
+				SNew(SImage)
+				.Image(FJointEditorStyle::GetUEEditorSlateStyleSet().GetBrush("TimelineEditor.Replicated"))
+				.ToolTipText(LOCTEXT("AsynchoronousMessage","This node's action is asynchoronous.\nThe execution of the sub nodes of this node will not follow the flow of the dialogue."))
+			]
+		];
+	}
 
 }
 
-FLinearColor UDialogueEdFragment_Sequence::GetNodeTitleColor() const
-{
-	return FColor::Transparent;
 
-}
 
 #undef LOCTEXT_NAMESPACE

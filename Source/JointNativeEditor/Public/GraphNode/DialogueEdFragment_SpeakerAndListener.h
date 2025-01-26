@@ -30,9 +30,5 @@ public:
 	TSharedPtr<SScrollBox> SpeakersBox;
 	
 	TSharedPtr<SScrollBox> ListenersBox;
-
-public:
-	
-	virtual FLinearColor GetNodeTitleColor() const override;
 	
 };

@@ -6,7 +6,12 @@
 
 UDF_SpeakerAndListener::UDF_SpeakerAndListener()
 {
+#if WITH_EDITORONLY_DATA
 
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(0.05f, 0.15f, 0.2f, 0.4);
+	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+#endif
 }
 
 TArray<UDF_Participant*> UDF_SpeakerAndListener::GetAllSpeakers()

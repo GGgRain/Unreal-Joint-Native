@@ -35,9 +35,5 @@ public:
 
 	UPROPERTY(Transient)
 	bool bHasTransaction = false;
-
-public:
 	
-	virtual FLinearColor GetNodeTitleColor() const override;
-
 };

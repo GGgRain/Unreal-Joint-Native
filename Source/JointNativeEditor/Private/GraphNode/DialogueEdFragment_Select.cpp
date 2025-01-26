@@ -84,9 +84,4 @@ FPinConnectionResponse UDialogueEdFragment_Select::CanAttachSubNodeOnThis(const 
 	return Super::CanAttachSubNodeOnThis(InSubNode);
 }
 
-FLinearColor UDialogueEdFragment_Select::GetNodeTitleColor() const
-{
-	return FLinearColor(0.4f, 0.2f, 0.5f);
-}
-
 #undef LOCTEXT_NAMESPACE

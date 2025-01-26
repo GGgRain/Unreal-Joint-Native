@@ -11,6 +11,13 @@ UDF_Condition::UDF_Condition()
 	//NodeTags.AddTag(SDS_NodeTag_Decorator);
 	
 	//Condition node can be attached anywhere.
+#if WITH_EDITORONLY_DATA
+	bAllowDisplayClassFriendlyNameText = true;
+	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Stow;
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(0.078125, 0.001330,0.013824, 0.700000);
+	
+#endif
 }
 
 void UDF_Condition::SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode)

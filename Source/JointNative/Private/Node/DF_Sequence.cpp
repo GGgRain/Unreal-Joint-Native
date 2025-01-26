@@ -7,6 +7,19 @@
 
 UDF_Sequence::UDF_Sequence()
 {
+
+#if WITH_EDITORONLY_DATA
+
+	bUseSpecifiedGraphNodeBodyColor = true;
+	NodeBodyColor = FLinearColor(
+		2.4f / 255.f,
+		2.4f / 255.f,
+		2.8f / 255.f,
+		225.f / 255.f);
+	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+
+#endif
+	
 }
 
 void UDF_Sequence::SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode)

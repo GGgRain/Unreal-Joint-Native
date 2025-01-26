@@ -24,9 +24,6 @@ public:
 
 	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
 
-public:
-	
-	virtual FLinearColor GetNodeTitleColor() const override;
 
 public:
 
@@ -42,11 +39,7 @@ public:
 	void UpdateSlate();
 
 	virtual bool CanHaveBreakpoint() const override;
-
-public:
-
-	virtual FLinearColor GetNodeBodyTintColor() const override;
-
+	
 public:
 
 	/**
