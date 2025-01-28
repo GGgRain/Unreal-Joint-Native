@@ -8,9 +8,10 @@
 #include "DF_TextStyle.generated.h"
 
 /**
- * 
+ * A fragment that contains text style table (Rich Text) for the graph.
+ * Use this fragment to feed text styles on the text fragments on your graph.
  */
-UCLASS(Category = "Joint|Native|Core|Text")
+UCLASS(Category = "Joint|Native|Core|Text", DisplayName="Text Style")
 class JOINTNATIVE_API UDF_TextStyle: public UDialogueFragment
 {
 	GENERATED_BODY()

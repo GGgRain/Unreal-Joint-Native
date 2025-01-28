@@ -53,7 +53,7 @@ public:
 	 * Get the participant component this node represent.
 	 * @return The participant component this node represent.
 	 */
-	UFUNCTION(BlueprintCallable, Category="Participant")
+	UFUNCTION(BlueprintPure, Category="Participant")
 	UDialogueParticipantComponent* GetParticipantComponent();
 
 

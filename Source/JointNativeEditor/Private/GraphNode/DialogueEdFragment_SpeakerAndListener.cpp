@@ -27,32 +27,69 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	if(NodeSlate && NodeSlate->CenterContentBox)
+	UDF_SpeakerAndListener* CastedNodeInstance = GetCastedNodeInstance<UDF_SpeakerAndListener>();
+
+	if (NodeSlate && NodeSlate->CenterContentBox && CastedNodeInstance)
 	{
-		const TAttribute<EVisibility> SpeakersBoxVisibility_Attr = TAttribute<EVisibility>::Create(
-			TAttribute<EVisibility>::FGetter::CreateLambda([this]
+		const TAttribute<EVisibility> SpeakersBoxVisibility_Attr = TAttribute<EVisibility>::CreateLambda([CastedNodeInstance]
+		{
+			return CastedNodeInstance && CastedNodeInstance->Speakers.Num() > 0
+				       ? EVisibility::SelfHitTestInvisible
+				       : EVisibility::Collapsed;
+		});
+
+		const TAttribute<EVisibility> ChevronVisibility_Attr = TAttribute<EVisibility>::CreateLambda([CastedNodeInstance]
+		{
+			return (CastedNodeInstance && CastedNodeInstance->Speakers.Num() > 0) || (CastedNodeInstance && CastedNodeInstance->Listeners.Num() > 0)
+				       ? EVisibility::SelfHitTestInvisible
+				       : EVisibility::Collapsed;
+		});
+
+		const TAttribute<EVisibility> ListenersBoxVisibility_Attr = TAttribute<EVisibility>::CreateLambda([CastedNodeInstance]
+		{
+			return CastedNodeInstance && CastedNodeInstance->Listeners.Num() > 0
+				       ? EVisibility::SelfHitTestInvisible
+				       : EVisibility::Collapsed;
+		});
+
+		const TAttribute<EVisibility> ClearParticipantBorderVisibility_Attr = TAttribute<EVisibility>::CreateLambda(
+			[CastedNodeInstance]
 			{
-				if (SpeakersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
+				return CastedNodeInstance && CastedNodeInstance->Listeners.Num() + CastedNodeInstance->Speakers.Num() <= 0
+					       ? EVisibility::SelfHitTestInvisible
+					       : EVisibility::Collapsed;
+			});
 
-				return EVisibility::Collapsed;
-			}));
 
-		const TAttribute<EVisibility> ChevronVisibility_Attr = TAttribute<EVisibility>::Create(
-			TAttribute<EVisibility>::FGetter::CreateLambda([this]
-			{
-				if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
+		NodeSlate->CenterContentBox->AddSlot()
+			.AutoHeight()
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			[
+				SNew(SBorder)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				.RenderTransformPivot(FVector2D(0.5))
+				.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.NodeShadow"))
+				.BorderBackgroundColor(FJointEditorStyle::Color_Node_Shadow)
+				.Padding(FJointEditorStyle::Margin_Shadow)
+				.Visibility(ClearParticipantBorderVisibility_Attr)
+				[
+					SNew(SBorder)
+					.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
+					.BorderBackgroundColor(FJointEditorStyle::Color_Normal * 0.5)
+					.Padding(FJointEditorStyle::Margin_Frame)
+					.Visibility(EVisibility::HitTestInvisible)
+					[
+						SNew(STextBlock)
+						.Justification(ETextJustify::Center)
+						.Text(LOCTEXT("ClearParticpant", "No Participants (Clear)"))
+						.TextStyle(FJointEditorStyle::Get(), "JointUI.TextBlock.Black.h5")
+						.Visibility(EVisibility::HitTestInvisible)
+					]
+				]
+			];
 
-				return EVisibility::Collapsed;
-			}));
-
-		const TAttribute<EVisibility> ListenersBoxVisibility_Attr = TAttribute<EVisibility>::Create(
-			TAttribute<EVisibility>::FGetter::CreateLambda([this]
-			{
-				if (ListenersBox.Get()->GetChildren()->Num() > 0) return EVisibility::SelfHitTestInvisible;
-
-				return EVisibility::Collapsed;
-			}));
-		
 		NodeSlate->CenterContentBox->AddSlot()
 			.AutoHeight()
 			.HAlign(HAlign_Fill)
@@ -91,7 +128,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
-	if(NodeSlate && NodeSlate->CenterContentBox)
+	if (NodeSlate && NodeSlate->CenterContentBox)
 	{
 		SpeakersBox->ClearChildren();
 		ListenersBox->ClearChildren();
@@ -107,16 +144,17 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 			FDialogueNodePointer& Listener = SpeakerAndListener->Listeners[i];
 
-			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateLambda(
-				[Listener]
-				{
-					if (Listener.Node == nullptr) return LOCTEXT("NoParticipant", "No Participant Specified");
-					if (const UDF_Participant* CastedNode = Cast<UDF_Participant>(Listener.Node.Get()))
-						return FText::FromString(
-							CastedNode->ParticipantTag.ToString());
+			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(
+				TAttribute<FText>::FGetter::CreateLambda(
+					[Listener]
+					{
+						if (Listener.Node == nullptr) return LOCTEXT("NoParticipant", "No Participant Specified");
+						if (const UDF_Participant* CastedNode = Cast<UDF_Participant>(Listener.Node.Get()))
+							return FText::FromString(
+								CastedNode->ParticipantTag.ToString());
 
-					return FText::GetEmpty();
-				}));
+						return FText::GetEmpty();
+					}));
 
 			ListenersBox->AddSlot()
 			[
@@ -137,16 +175,17 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 			FDialogueNodePointer& Speaker = SpeakerAndListener->Speakers[i];
 
-			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateLambda(
-				[Speaker]
-				{
-					if (Speaker.Node == nullptr) return LOCTEXT("NoParticipant", "No Participant Specified");
-					if (const UDF_Participant* CastedNode = Cast<UDF_Participant>(Speaker.Node.Get()))
-						return FText::FromString(
-							CastedNode->ParticipantTag.ToString());
+			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(
+				TAttribute<FText>::FGetter::CreateLambda(
+					[Speaker]
+					{
+						if (Speaker.Node == nullptr) return LOCTEXT("NoParticipant", "No Participant Specified");
+						if (const UDF_Participant* CastedNode = Cast<UDF_Participant>(Speaker.Node.Get()))
+							return FText::FromString(
+								CastedNode->ParticipantTag.ToString());
 
-					return FText::GetEmpty();
-				}));
+						return FText::GetEmpty();
+					}));
 
 			SpeakersBox->AddSlot()
 			[

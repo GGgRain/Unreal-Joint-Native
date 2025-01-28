@@ -43,7 +43,11 @@ public:
 	 * Note for the SDS1 users : it's a new version of IDName in SDS2.
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SpeechBubble")
-		FGameplayTagContainer ParticipantTag; 
+		FGameplayTagContainer ParticipantTag;
+
+public:
+
+	
 	
 	
 };
