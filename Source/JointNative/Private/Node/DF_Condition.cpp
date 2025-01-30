@@ -63,7 +63,7 @@ void UDF_Condition::PlayNextSubNode()
 }
 
 
-void UDF_Condition::OnNodeBeginPlay_Implementation()
+void UDF_Condition::PostNodeBeginPlay_Implementation()
 {
 	PlayNextSubNode();
 }

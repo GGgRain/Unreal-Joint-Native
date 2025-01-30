@@ -32,7 +32,7 @@ public:
 
 public:
 
-	virtual void OnNodeBeginPlay_Implementation() override;
+	virtual void PostNodeBeginPlay_Implementation() override;
 	
 	virtual TArray<UDialogueNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<ADialogueActor>& InHostingDialogueInstance) override;
 

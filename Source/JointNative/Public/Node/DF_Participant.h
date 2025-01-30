@@ -59,5 +59,5 @@ public:
 
 public:
 
-	virtual void OnNodeBeginPlay_Implementation() override;
+	virtual void PostNodeBeginPlay_Implementation() override;
 };

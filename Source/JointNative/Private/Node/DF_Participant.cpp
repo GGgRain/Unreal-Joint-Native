@@ -17,14 +17,14 @@ UDF_Participant::UDF_Participant()
 #endif
 }
 
-void UDF_Participant::OnNodeBeginPlay_Implementation()
+void UDF_Participant::PostNodeBeginPlay_Implementation()
 {
 	if(!ParticipantComponentInstance && bAllowCollectingParticipantComponentOnWorldAutomatically)
 	{
 		ParticipantComponentInstance = UJointNativeFunctionLibrary::FindFirstParticipantComponent(GetWorld(),ParticipantTag);
 	}
 	
-	Super::OnNodeBeginPlay_Implementation();
+	Super::PostNodeBeginPlay_Implementation();
 }
 
 UDialogueParticipantComponent* UDF_Participant::GetParticipantComponent()

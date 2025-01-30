@@ -57,7 +57,7 @@ void UDF_Sequence::PlayNextSubNode()
 }
 
 
-void UDF_Sequence::OnNodeBeginPlay_Implementation()
+void UDF_Sequence::PostNodeBeginPlay_Implementation()
 {
 	//reset
 	CurrentIndex = INDEX_NONE;

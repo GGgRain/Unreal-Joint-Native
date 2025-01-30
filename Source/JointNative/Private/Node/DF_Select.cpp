@@ -17,11 +17,11 @@ UDF_Select::UDF_Select()
 	
 }
 
-void UDF_Select::OnNodeBeginPlay_Implementation()
+void UDF_Select::PostNodeBeginPlay_Implementation()
 {
 	bIsSelected = false;
 	
-	Super::OnNodeBeginPlay_Implementation();
+	Super::PreNodeBeginPlay_Implementation();
 }
 
 TArray<UDialogueNodeBase*> UDF_Select::SelectNextNodes_Implementation(

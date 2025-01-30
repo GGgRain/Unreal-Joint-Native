@@ -14,7 +14,7 @@ UDF_LevelSequence::UDF_LevelSequence()
 }
 
 
-void UDF_LevelSequence::OnNodeBeginPlay_Implementation()
+void UDF_LevelSequence::PostNodeBeginPlay_Implementation()
 {
 
 	//If it is null at the first stage, just end it.

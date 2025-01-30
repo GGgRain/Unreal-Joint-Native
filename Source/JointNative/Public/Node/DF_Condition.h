@@ -14,7 +14,7 @@
  * 
  * Implement some sub nodes and change bConditionResult value from the sub node side to implement the condition action.
  */
-UCLASS(Category = "Joint|Native|Condition")
+UCLASS(Category = "Joint|Native|Condition",  meta=(DeprecatedNode, DeprecationMessage="Deprecated on Joint Native 1.9.0. Use Condition AND instead"))
 class JOINTNATIVE_API UDF_Condition : public UDialogueFragment
 {
 	GENERATED_BODY()
@@ -32,7 +32,7 @@ public:
 	bool bConditionResult = true;
 
 public:
-	virtual void OnNodeBeginPlay_Implementation() override;
+	virtual void PostNodeBeginPlay_Implementation() override;
 
 	UFUNCTION()
 	void OnSubNodePending(UDialogueNodeBase* InNode);
