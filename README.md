@@ -1,28 +1,71 @@
-![Joint-Native-Logo](/Resources/Icon128.png)
-# Joint-Native
-The official plugin for [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) provides basic content for Joint, including nodes, widgets, use cases, and samples for various project styles. 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/30601e49-3fe1-48d9-ac61-f5b3818c0eff" width="300" height="300" alt="Joint-Native Logo">
+</div>
 
-## Dependencies 
-This plugin is designed and dependent on [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a). Make sure to purchase the plugin first and install it on your project before you install this plugin.
+<div align="center">
+  <h1>Joint-Native</h1>
+  <h3>The official plugin for Joint providing dialogue related features and assets.</h3>
+</div>
 
-## Installation
-1. Purchase [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) and enable it on the project that you want to use Joint-Native with.
-2. Download the repository as a zip file or clone it on your workstation and unzip it. (Unzip it to be 'Joint-Native' folder.)
-4. Go to your project directory and drop the unzipped folder in the 'Plugins' folder (If you don't have one, then make an empty folder and name it 'Plugins') of your project directory.
-5. Launch your project and see whether it launches well. If you get a dialog box like 'Would you build the following modules...' then press yes.
-6. If it doesn't launch well, Please check out whether you have any missing steps on the installation first, and if you still have a problem with it, then please visit us in [our Discord channel](https://discord.gg/DzNFax2aBS) for further help.
+<p align="center">
+  <a href="https://github.com/GGgRain/Unreal-Joint-Native/fork" target="_blank">
+    <img src="https://img.shields.io/github/forks/GGgRain/Unreal-Joint-Native?" alt="Badge showing the total of project forks">
+  </a>
+  <a href="https://github.com/GGgRain/Unreal-Joint-Native/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/GGgRain/Unreal-Joint-Native?" alt="Badge showing the total of project stars">
+  </a>
+  <a href="https://github.com/GGgRain/Unreal-Joint-Native/blob/master/LICENSE" target="_blank">
+    <img alt="Badge showing project license type" src="https://img.shields.io/github/license/GGgRain/Unreal-Joint-Native?color=f85149">
+  </a>
+  <a href="https://discord.gg/DzNFax2aBS">
+    <img src="https://img.shields.io/discord/977755047557496882?logo=discord&logoColor=white" alt="Chat on Discord">
+  </a>
+</p>
 
-After installing and launching the plugin, please check out the plugin contents and check out the **README** asset first.
+<p align="center">
+  <a href="#mag-about">About</a> &#xa0; | &#xa0;
+  <a href="#clipboard-dependencies">Dependencies</a> &#xa0; | &#xa0;
+  <a href="#inbox_tray-installation">Installation</a> &#xa0; | &#xa0;
+  <a href="#camera-usecases">Usecases</a> &#xa0; | &#xa0;
+  <a href="#loudspeaker-supports">Supports</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a>
+</p>
 
-## Contents 
-You can get some basic nodes for Joint and also a sample level and assets for the explanations. Check out those to see how you can use Joint to make conversations.
+## :mag: About ##
+
+Joint-Native is the official plugin that extends [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) by providing essential nodes, widgets, sample levels, and assets designed for creating various conversation scripting systems within Unreal Engine. This plugin is essential for developers aiming to implement conversation-based interactions and functionality efficiently.
+
+<p align="center">
+  <i>Please consider leaving a star if you loved this project! </i>⭐
+</p>
+
+## :clipboard: Dependencies ##
+
+This plugin relies on the [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) plugin. Ensure that you’ve purchased and installed Joint into your project before proceeding with the installation of Joint-Native.
+
+## :inbox_tray: Installation ##
+
+### Steps:
+1. Purchase and enable [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) on your project.
+2. Download this repository as a zip file or clone it to your workstation, then unzip the folder and rename it to `Joint-Native`.
+3. Place the unzipped `Joint-Native` folder into the `Plugins` directory of your Unreal project. If this directory doesn’t exist, create it.
+4. Launch your project and confirm it runs successfully. If you see a prompt asking about building modules, click **Yes**.
+5. If the plugin doesn’t launch properly, please review the installation steps again. For further assistance, reach out to us on [Discord](https://discord.gg/DzNFax2aBS).
+
+Once installed and launched, be sure to review the **README** asset for more detailed information.
+
+## :camera: Usecases ##
+
+This plugin can be utilized to create detailed conversation systems using nodes and widgets within Unreal Engine. Check out the provided sample level to understand how to integrate and utilize these features in your project.
+
 ![Nodes](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/470095f4-9af4-435f-a766-b546b8eb69f6)
 ![Sample](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/c313cb70-8f13-455e-80a0-6323adb58833)
-![SampleLevel](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/f779d7aa-648a-44b9-9bef-6534afd6341c)
+![Sample Level](https://github.com/GGgRain/Unreal-Joint-Native/assets/69423737/f779d7aa-648a-44b9-9bef-6534afd6341c)
 
-## Supports
-We have [an official Discord support channel](https://discord.gg/DzNFax2aBS) for the plugin! you can freely come here and ask any question related to the plugin.
-Also, we will provide documentation for the plugin in the future. Please keep in touch.
+## :loudspeaker: Supports ##
 
-## License
-This project itself and the source codes and assets in this project are licensed under Apache License Version 2.0, Check out the [LICENSE](/LICENSE) file for further details.
+If you need help, feel free to join our [official Discord support channel](https://discord.gg/DzNFax2aBS). Our community is happy to assist you with any plugin-related queries.
+
+## :memo: License ##
+
+This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Please refer to the [LICENSE](LICENSE) file for further details.
