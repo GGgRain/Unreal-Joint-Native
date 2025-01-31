@@ -43,14 +43,15 @@ Joint-Native is the official plugin that extends [Joint](https://www.unrealengin
 
 This plugin relies on the [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) plugin. Ensure that you’ve purchased and installed Joint into your project before proceeding with the installation of Joint-Native.
 
-## :inbox_tray: Installation ##
+## :inbox_tray: Installation & Necessary Setting Up ##
 
 ### Steps:
 1. Purchase and enable [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) on your project.
 2. Download this repository as a zip file or clone it to your workstation, then unzip the folder and rename it to `Joint-Native`.
 3. Place the unzipped `Joint-Native` folder into the `Plugins` directory of your Unreal project. If this directory doesn’t exist, create it.
 4. Launch your project and confirm it runs successfully. If you see a prompt asking about building modules, click **Yes**.
-5. If the plugin doesn’t launch properly, please review the installation steps again. For further assistance, reach out to us on [Discord](https://discord.gg/DzNFax2aBS).
+5. **In editor, go visit Project Settings -> GameplayTags -> Add an element on Gameplay Tag Table List -> Provide DT_JointSampleGameplayTags**
+6. If the plugin doesn’t launch properly, please review the installation steps again. For further assistance, reach out to us on [Discord](https://discord.gg/DzNFax2aBS).
 
 Once installed and launched, be sure to review the **README** asset for more detailed information.
 
