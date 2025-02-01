@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 11,
-	"VersionName": "1.9.0",
+	"Version": 12,
+	"VersionName": "1.9.1",
 	"FriendlyName": "Joint Native",
 	"Description": "The basic contents for Joint, including nodes, widgets, Use-cases and samples for various project styles.",
 	"Category": "Conversation",
