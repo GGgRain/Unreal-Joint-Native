@@ -35,7 +35,7 @@ public:
 	 * You can set this value to specify the component.
 	 * If this value was nullptr, then it will try to search it on the world at runtime.
 	 */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Participant Reference")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Participant Reference", Replicated)
 	UDialogueParticipantComponent* ParticipantComponentInstance = nullptr;
 
 	
@@ -60,4 +60,9 @@ public:
 public:
 
 	virtual void PostNodeBeginPlay_Implementation() override;
+
+public:
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 };
