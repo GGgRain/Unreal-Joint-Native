@@ -12,7 +12,7 @@
  * Sub nodes attached to this node will be played after the prior sub node has been marked as pending.
  *
  */
-UCLASS(Category = "Joint|Native|Core|Flow")
+UCLASS(Category = "Joint Native|C++|Flow")
 class JOINTNATIVE_API UDF_Sequence: public UDialogueFragment
 {
 	GENERATED_BODY()

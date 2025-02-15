@@ -11,7 +11,7 @@
  * A fragment that contains a text.
  * Can be used in multiple occasion.
  */
-UCLASS(Category = "Joint|Native|Core|Text")
+UCLASS(Category = "Joint Native|C++|Text")
 class JOINTNATIVE_API UDF_Text: public UDialogueFragment
 {
 	GENERATED_BODY()

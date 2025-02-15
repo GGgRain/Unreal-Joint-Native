@@ -22,7 +22,7 @@
  * It will not return any of the nodes if it was not played.
  * Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead.
  */
-UCLASS(Category = "Joint|Native|Core|Flow", meta=(DeprecationMessage="Deprecated on Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead."))
+UCLASS(Category = "Joint Native|C++|Flow", Hidden, meta=(DeprecationMessage="Deprecated on Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead."))
 class JOINTNATIVE_API UDF_Branch: public UDialogueFragment
 {
 	GENERATED_BODY()

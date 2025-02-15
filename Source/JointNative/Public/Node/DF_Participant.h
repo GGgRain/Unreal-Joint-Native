@@ -13,7 +13,7 @@ class UDialogueParticipantComponent;
  * You can access the participant with this node.
  * This node can be used in various situation when you need to get the reference of the participant in the graph.
  */
-UCLASS(Category = "Joint|Native|Core|Participant")
+UCLASS(Category = "Joint Native|C++|Participant")
 class JOINTNATIVE_API UDF_Participant: public UDialogueFragment
 {
 	GENERATED_BODY()

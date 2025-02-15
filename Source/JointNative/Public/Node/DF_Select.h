@@ -21,7 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDFSelectSelectionChanged, const UD
  * This node will be depreciated eventually and will be replaced with BP version, but not today.
  */
 
-UCLASS(Category = "Joint|Native|Flow")
+UCLASS(Category = "Joint Native|C++|Flow")
 class JOINTNATIVE_API UDF_Select: public UDialogueFragment
 {
 	GENERATED_BODY()

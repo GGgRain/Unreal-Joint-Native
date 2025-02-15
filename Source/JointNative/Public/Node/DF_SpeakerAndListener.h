@@ -12,7 +12,7 @@ class UDF_Participant;
  * A default implementation of the speakers and listeners in the dialogue node.
  * Useful when we have to display which participants are involved in the conversation.
  */
-UCLASS(Category = "Joint|Native|Participant", DisplayName="Speaker And Listener")
+UCLASS(Category = "Joint Native|C++|Participant", DisplayName="Speaker And Listener")
 class JOINTNATIVE_API UDF_SpeakerAndListener: public UDialogueFragment
 {
 	GENERATED_BODY()
