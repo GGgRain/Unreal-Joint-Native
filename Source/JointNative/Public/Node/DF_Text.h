@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
 #include "DF_Text.generated.h"
 
@@ -12,7 +12,7 @@
  * Can be used in multiple occasion.
  */
 UCLASS(Category = "Joint Native|C++|Text")
-class JOINTNATIVE_API UDF_Text: public UDialogueFragment
+class JOINTNATIVE_API UDF_Text: public UJointFragment
 {
 	GENERATED_BODY()
 
@@ -35,7 +35,7 @@ public:
 	 * A text style fragment the text can use.
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Text")
-	FDialogueNodePointer TextStyleInstance;
+	FJointNodePointer TextStyleInstance;
 
 	/**
 	 * Get the text style table if it has any for the stylization. This is optional.

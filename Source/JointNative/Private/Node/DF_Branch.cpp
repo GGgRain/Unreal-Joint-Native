@@ -12,15 +12,15 @@ UDF_Branch::UDF_Branch()
 	//Condition node can be attached anywhere.
 }
 
-TArray<UDialogueNodeBase*> UDF_Branch::SelectNextNodes_Implementation(const TSoftObjectPtr<ADialogueActor>& InHostingDialogueInstance)
+TArray<UJointNodeBase*> UDF_Branch::SelectNextNodes_Implementation(const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance)
 {
 
 	if(!IsNodeBegunPlay())
 	{
-		return TArray<UDialogueNodeBase*>();
+		return TArray<UJointNodeBase*>();
 	}
 	
-	UDialogueFragment* Condition = FindFragmentByClass(UDF_Condition::StaticClass());
+	UJointFragment* Condition = FindFragmentByClass(UDF_Condition::StaticClass());
 
 	if(Condition)
 	{
@@ -31,7 +31,7 @@ TArray<UDialogueNodeBase*> UDF_Branch::SelectNextNodes_Implementation(const TSof
 			return TrueNode;
 		}else
 		{
-			if(UDialogueFragment* ChildBranch = FindFragmentByClass(UDF_Branch::StaticClass()))
+			if(UJointFragment* ChildBranch = FindFragmentByClass(UDF_Branch::StaticClass()))
 			{
 				return ChildBranch->SelectNextNodes(InHostingDialogueInstance);
 			}
@@ -41,7 +41,7 @@ TArray<UDialogueNodeBase*> UDF_Branch::SelectNextNodes_Implementation(const TSof
 				return FalseNode;
 			}
 
-			return TArray<UDialogueNodeBase*>();
+			return TArray<UJointNodeBase*>();
 		}
 	}
 	

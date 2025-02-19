@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 #include "DF_Participant.generated.h"
 
 class UDialogueParticipantComponent;
@@ -14,7 +14,7 @@ class UDialogueParticipantComponent;
  * This node can be used in various situation when you need to get the reference of the participant in the graph.
  */
 UCLASS(Category = "Joint Native|C++|Participant")
-class JOINTNATIVE_API UDF_Participant: public UDialogueFragment
+class JOINTNATIVE_API UDF_Participant: public UJointFragment
 {
 	GENERATED_BODY()
 

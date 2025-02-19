@@ -3,7 +3,7 @@
 
 #include "DialogueEdFragment_Branch.h"
 
-#include "DialogueManager.h"
+#include "JointManager.h"
 #include "Misc/UObjectToken.h"
 #include "Node/DF_Branch.h"
 #include "Node/DF_Condition.h"
@@ -18,7 +18,7 @@ UDialogueEdFragment_Branch::UDialogueEdFragment_Branch()
 	NodeHeight = 200;
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Branch::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Branch::SupportedNodeClass()
 {
 	return UDF_Branch::StaticClass();
 }
@@ -33,7 +33,7 @@ void UDialogueEdFragment_Branch::OnCompileNode()
 		if (!GetCastedNodeInstance()->FindFragmentByClass(UDF_Condition::StaticClass()))
 		{
 			TSharedRef<FTokenizedMessage> TokenizedMessage = FTokenizedMessage::Create(EMessageSeverity::Info);
-			TokenizedMessage->AddToken(FAssetNameToken::Create(GetDialogueManager() ? GetDialogueManager()->GetName() : "NONE"));
+			TokenizedMessage->AddToken(FAssetNameToken::Create(GetJointManager() ? GetJointManager()->GetName() : "NONE"));
 			TokenizedMessage->AddToken(FTextToken::Create(FText::FromString(":")));
 			TokenizedMessage->AddToken(FUObjectToken::Create(this));
 			TokenizedMessage->AddToken(FTextToken::Create(LOCTEXT("Compile_NoCondition","No condition node has been attached. Branch node must have one condition fragment as sub node to work properly. It will always return the nodes at the true pins if it has been played.")) );
@@ -49,8 +49,8 @@ void UDialogueEdFragment_Branch::AllocateDefaultPins()
 {
 	PinData.Empty();
 
-	PinData.Add(FDialogueEdPinData("True", EEdGraphPinDirection::EGPD_Output));
-	PinData.Add(FDialogueEdPinData("False", EEdGraphPinDirection::EGPD_Output));
+	PinData.Add(FJointEdPinData("True", EEdGraphPinDirection::EGPD_Output));
+	PinData.Add(FJointEdPinData("False", EEdGraphPinDirection::EGPD_Output));
 }
 
 void UDialogueEdFragment_Branch::ReallocatePins()
@@ -60,11 +60,11 @@ void UDialogueEdFragment_Branch::ReallocatePins()
 	if (CastedNodeInstance == nullptr) return;
 
 	//Collect all the False pins by whether they are actually implemented or not.
-	TArray<FDialogueEdPinData> NotImplementedFalsePinData;
-	TArray<FDialogueEdPinData> FalsePinData;
+	TArray<FJointEdPinData> NotImplementedFalsePinData;
+	TArray<FJointEdPinData> FalsePinData;
 
 
-	for (const FDialogueEdPinData& Data : PinData)
+	for (const FJointEdPinData& Data : PinData)
 	{
 		if (Data.PinName == "False")
 		{
@@ -86,7 +86,7 @@ void UDialogueEdFragment_Branch::ReallocatePins()
 	if (!CastedNodeInstance->bUseFalse)
 	{
 		//Remove the false pin.
-		for (FDialogueEdPinData DialogueEdPinData : FalsePinData)
+		for (FJointEdPinData DialogueEdPinData : FalsePinData)
 		{
 			PinData.Remove(DialogueEdPinData);
 		}
@@ -104,7 +104,7 @@ void UDialogueEdFragment_Branch::ReallocatePins()
 
 		if (FalsePinData.IsEmpty())
 		{
-			PinData.Add(FDialogueEdPinData("False", EEdGraphPinDirection::EGPD_Output));
+			PinData.Add(FJointEdPinData("False", EEdGraphPinDirection::EGPD_Output));
 		}
 	}
 }
@@ -141,7 +141,7 @@ void UDialogueEdFragment_Branch::NodeConnectionListChanged()
 
 				if (!ConnectedNode) continue;
 
-				UDialogueEdGraphNode* CastedGraphNode = Cast<UDialogueEdGraphNode>(ConnectedNode);
+				UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
 
 				if (!CastedGraphNode) continue;
 
@@ -160,7 +160,7 @@ void UDialogueEdFragment_Branch::NodeConnectionListChanged()
 
 				if (!ConnectedNode) continue;
 
-				UDialogueEdGraphNode* CastedGraphNode = Cast<UDialogueEdGraphNode>(ConnectedNode);
+				UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
 
 				if (!CastedGraphNode) continue;
 
@@ -170,7 +170,7 @@ void UDialogueEdFragment_Branch::NodeConnectionListChanged()
 	}
 }
 
-FPinConnectionResponse UDialogueEdFragment_Branch::CanAttachSubNodeOnThis(const UDialogueEdGraphNode* InSubNode) const
+FPinConnectionResponse UDialogueEdFragment_Branch::CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const
 {
 	UDF_Branch* CastedNodeInstance = GetCastedNodeInstance<UDF_Branch>();
 

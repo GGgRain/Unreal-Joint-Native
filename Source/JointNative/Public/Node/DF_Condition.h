@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
 #include "DF_Condition.generated.h"
 
@@ -15,7 +15,7 @@
  * Implement some sub nodes and change bConditionResult value from the sub node side to implement the condition action.
  */
 UCLASS(Category = "Joint Native|C++|Condition", Hidden, meta=(DeprecatedNode, DeprecationMessage="Deprecated on Joint Native 1.9.0. Use Condition AND instead"))
-class JOINTNATIVE_API UDF_Condition : public UDialogueFragment
+class JOINTNATIVE_API UDF_Condition : public UJointFragment
 {
 	GENERATED_BODY()
 
@@ -35,10 +35,10 @@ public:
 	virtual void PostNodeBeginPlay_Implementation() override;
 
 	UFUNCTION()
-	void OnSubNodePending(UDialogueNodeBase* InNode);
+	void OnSubNodePending(UJointNodeBase* InNode);
 
 public:
-	void SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode);
+	void SelectNodeAsPlayingNode(UJointNodeBase* SubNode);
 
 	void PlayNextSubNode();
 

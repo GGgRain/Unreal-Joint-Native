@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/SubNode/DialogueEdGraphNode_Fragment.h"
+#include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_Sequence.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class JOINTNATIVEEDITOR_API UDialogueEdFragment_Sequence : public UDialogueEdGraphNode_Fragment
+class JOINTNATIVEEDITOR_API UDialogueEdFragment_Sequence : public UJointEdGraphNode_Fragment
 {
 	GENERATED_BODY()
 
@@ -20,7 +20,7 @@ public:
 
 public:
 
-	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
+	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 
 	virtual void ModifyGraphNodeSlate() override;
 	

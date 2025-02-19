@@ -3,7 +3,7 @@
 
 #include "DF_Condition.h"
 
-#include "DialogueActor.h"
+#include "JointActor.h"
 
 UDF_Condition::UDF_Condition()
 {
@@ -13,18 +13,18 @@ UDF_Condition::UDF_Condition()
 	//Condition node can be attached anywhere.
 #if WITH_EDITORONLY_DATA
 	bAllowDisplayClassFriendlyNameText = true;
-	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Stow;
+	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	bUseSpecifiedGraphNodeBodyColor = true;
 	NodeBodyColor = FLinearColor(0.078125, 0.001330,0.013824, 0.700000);
 	
 #endif
 }
 
-void UDF_Condition::SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode)
+void UDF_Condition::SelectNodeAsPlayingNode(UJointNodeBase* SubNode)
 {
-	SubNode->OnDialogueNodeMarkedAsPendingDelegate.AddDynamic(this, &UDF_Condition::OnSubNodePending);
+	SubNode->OnJointNodeMarkedAsPendingDelegate.AddDynamic(this, &UDF_Condition::OnSubNodePending);
 
-	GetHostingDialogueInstance()->RequestNodeBeginPlay(SubNode);
+	GetHostingJointInstance()->RequestNodeBeginPlay(SubNode);
 }
 
 void UDF_Condition::PlayNextSubNode()
@@ -32,18 +32,18 @@ void UDF_Condition::PlayNextSubNode()
 	//Cancel the iteration when the condition value was false. 
 	if(bConditionResult == false)
 	{
-		GetHostingDialogueInstance()->RequestNodeEndPlay(this);
+		GetHostingJointInstance()->RequestNodeEndPlay(this);
 		
 		return;	
 	}
 	
-	if (!GetHostingDialogueInstance().IsValid()) return;
+	if (!GetHostingJointInstance().IsValid()) return;
 
 	CurrentIndex++;
 
 	while (SubNodes.IsValidIndex(CurrentIndex))
 	{
-		UDialogueNodeBase* SubNode = SubNodes[CurrentIndex];
+		UJointNodeBase* SubNode = SubNodes[CurrentIndex];
 
 		if (SubNode != nullptr)
 		{
@@ -58,7 +58,7 @@ void UDF_Condition::PlayNextSubNode()
 
 	if (!SubNodes.IsValidIndex(CurrentIndex))
 	{
-		GetHostingDialogueInstance()->RequestNodeEndPlay(this);
+		GetHostingJointInstance()->RequestNodeEndPlay(this);
 	}
 }
 
@@ -68,11 +68,11 @@ void UDF_Condition::PostNodeBeginPlay_Implementation()
 	PlayNextSubNode();
 }
 
-void UDF_Condition::OnSubNodePending(UDialogueNodeBase* InNode)
+void UDF_Condition::OnSubNodePending(UJointNodeBase* InNode)
 {
 	if (InNode == nullptr) return;
 
-	InNode->OnDialogueNodeMarkedAsPendingDelegate.RemoveDynamic(this, &UDF_Condition::OnSubNodePending);
+	InNode->OnJointNodeMarkedAsPendingDelegate.RemoveDynamic(this, &UDF_Condition::OnSubNodePending);
 
 	PlayNextSubNode();
 }

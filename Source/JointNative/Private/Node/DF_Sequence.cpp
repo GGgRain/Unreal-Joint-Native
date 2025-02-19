@@ -3,7 +3,7 @@
 
 #include "DF_Sequence.h"
 
-#include "DialogueActor.h"
+#include "JointActor.h"
 
 UDF_Sequence::UDF_Sequence()
 {
@@ -16,28 +16,28 @@ UDF_Sequence::UDF_Sequence()
 	// 	2.4f / 255.f,
 	// 	2.9f / 255.f,
 	// 	225.f / 255.f);
-	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
 
 #endif
 	
 }
 
-void UDF_Sequence::SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode)
+void UDF_Sequence::SelectNodeAsPlayingNode(UJointNodeBase* SubNode)
 {
-	SubNode->OnDialogueNodeMarkedAsPendingDelegate.AddDynamic(this, &UDF_Sequence::OnSubNodePending);
+	SubNode->OnJointNodeMarkedAsPendingDelegate.AddDynamic(this, &UDF_Sequence::OnSubNodePending);
 
-	GetHostingDialogueInstance()->RequestNodeBeginPlay(SubNode);
+	GetHostingJointInstance()->RequestNodeBeginPlay(SubNode);
 }
 
 void UDF_Sequence::PlayNextSubNode()
 {
-	if (!GetHostingDialogueInstance().IsValid()) return;
+	if (!GetHostingJointInstance().IsValid()) return;
 
 	CurrentIndex++;
 
 	while (SubNodes.IsValidIndex(CurrentIndex))
 	{
-		UDialogueNodeBase* SubNode = SubNodes[CurrentIndex];
+		UJointNodeBase* SubNode = SubNodes[CurrentIndex];
 
 		if (SubNode != nullptr)
 		{
@@ -52,7 +52,7 @@ void UDF_Sequence::PlayNextSubNode()
 
 	if (!SubNodes.IsValidIndex(CurrentIndex))
 	{
-		GetHostingDialogueInstance()->RequestNodeEndPlay(this);
+		GetHostingJointInstance()->RequestNodeEndPlay(this);
 	}
 }
 
@@ -65,11 +65,11 @@ void UDF_Sequence::PostNodeBeginPlay_Implementation()
 	PlayNextSubNode();
 }
 
-void UDF_Sequence::OnSubNodePending(UDialogueNodeBase* InNode)
+void UDF_Sequence::OnSubNodePending(UJointNodeBase* InNode)
 {
 	if (InNode == nullptr) return;
 
-	InNode->OnDialogueNodeMarkedAsPendingDelegate.RemoveDynamic(this, &UDF_Sequence::OnSubNodePending);
+	InNode->OnJointNodeMarkedAsPendingDelegate.RemoveDynamic(this, &UDF_Sequence::OnSubNodePending);
 
 	PlayNextSubNode();
 }

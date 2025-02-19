@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "MovieSceneSequencePlayer.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 #include "DF_LevelSequence.generated.h"
 
 class ALevelSequenceActor;
@@ -15,7 +15,7 @@ class ULevelSequence;
  * Level Sequence node is a node that spawns a level sequence actor when it is played.
  */
 UCLASS(Category = "Joint Native|C++|Sequence", Hidden, meta=(DeprecatedNode, DeprecationMessage="Deprecated on Joint Native 1.2.0. Use the blueprint version of it instead."))
-class JOINTNATIVE_API UDF_LevelSequence: public UDialogueFragment
+class JOINTNATIVE_API UDF_LevelSequence: public UJointFragment
 {
 	GENERATED_BODY()
 

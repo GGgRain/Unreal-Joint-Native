@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/SubNode/DialogueEdGraphNode_Fragment.h"
+#include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_Branch.generated.h"
 
 class UVoltAnimationManager;
@@ -13,7 +13,7 @@ class SContextTextEditor;
  * 
  */
 UCLASS()
-class JOINTNATIVEEDITOR_API UDialogueEdFragment_Branch : public UDialogueEdGraphNode_Fragment
+class JOINTNATIVEEDITOR_API UDialogueEdFragment_Branch : public UJointEdGraphNode_Fragment
 {
 	GENERATED_BODY()
 
@@ -23,7 +23,7 @@ public:
 
 public:
 
-	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
+	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 	
 	virtual void OnCompileNode() override;
 
@@ -37,7 +37,7 @@ public:
 
 public:
 
-	virtual FPinConnectionResponse CanAttachSubNodeOnThis(const UDialogueEdGraphNode* InSubNode) const override;
+	virtual FPinConnectionResponse CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const override;
 
 public:
 

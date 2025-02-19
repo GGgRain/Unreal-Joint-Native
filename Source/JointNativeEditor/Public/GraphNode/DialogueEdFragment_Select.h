@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/SubNode/DialogueEdGraphNode_Fragment.h"
+#include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_Select.generated.h"
 
 class SContextTextEditor;
@@ -11,7 +11,7 @@ class SContextTextEditor;
  * 
  */
 UCLASS()
-class JOINTNATIVEEDITOR_API UDialogueEdFragment_Select : public UDialogueEdGraphNode_Fragment
+class JOINTNATIVEEDITOR_API UDialogueEdFragment_Select : public UJointEdGraphNode_Fragment
 {
 	GENERATED_BODY()
 
@@ -21,13 +21,15 @@ public:
 
 public:
 	
-	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
+	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 	
-	FPinConnectionResponse CanAttachSubNodeOnThis(const UDialogueEdGraphNode* InSubNode) const override;
+	FPinConnectionResponse CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const override;
 	
 public:
 	
 	virtual void AllocateDefaultPins() override;
+
+	virtual void ReallocatePins() override;
 
 	virtual void NodeConnectionListChanged() override;
 

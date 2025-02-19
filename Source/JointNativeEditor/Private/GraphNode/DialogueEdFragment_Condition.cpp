@@ -3,7 +3,7 @@
 
 #include "DialogueEdFragment_Condition.h"
 
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Condition.h"
 
@@ -20,7 +20,7 @@ void UDialogueEdFragment_Condition::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->NameBox)
 	{
@@ -43,7 +43,7 @@ void UDialogueEdFragment_Condition::ModifyGraphNodeSlate()
 	}
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Condition::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Condition::SupportedNodeClass()
 {
 	return UDF_Condition::StaticClass();
 }

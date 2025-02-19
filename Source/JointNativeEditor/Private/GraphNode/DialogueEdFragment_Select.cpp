@@ -2,6 +2,7 @@
 
 #include "DialogueEdFragment_Select.h"
 
+#include "JointFunctionLibrary.h"
 #include "Node/DF_Select.h"
 
 
@@ -19,7 +20,15 @@ void UDialogueEdFragment_Select::AllocateDefaultPins()
 {
 	PinData.Empty();
 
-	PinData.Add(FDialogueEdPinData("Out", EEdGraphPinDirection::EGPD_Output));
+	PinData.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output));
+}
+
+void UDialogueEdFragment_Select::ReallocatePins()
+{
+	TArray<FJointEdPinData> Array;
+	Array.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output));
+	
+	PinData = UJointFunctionLibrary::ImplementPins(PinData, Array);
 }
 
 void UDialogueEdFragment_Select::NodeConnectionListChanged()
@@ -57,7 +66,7 @@ void UDialogueEdFragment_Select::NodeConnectionListChanged()
 
 			if (!ConnectedNode) continue;
 			
-			UDialogueEdGraphNode* CastedGraphNode = Cast<UDialogueEdGraphNode>(ConnectedNode);
+			UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
 
 			if (!CastedGraphNode) continue;
 
@@ -67,12 +76,12 @@ void UDialogueEdFragment_Select::NodeConnectionListChanged()
 	}
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Select::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Select::SupportedNodeClass()
 {
 	return UDF_Select::StaticClass();
 }
 
-FPinConnectionResponse UDialogueEdFragment_Select::CanAttachSubNodeOnThis(const UDialogueEdGraphNode* InSubNode) const
+FPinConnectionResponse UDialogueEdFragment_Select::CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const
 {
 	if (UDF_Select* Context = InSubNode->GetCastedNodeInstance<UDF_Select>())
 	{

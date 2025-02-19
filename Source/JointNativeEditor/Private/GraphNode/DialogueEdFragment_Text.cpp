@@ -4,7 +4,7 @@
 #include "DialogueEdFragment_Text.h"
 
 #include "Editor/JointEdUtils.h"
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Slate/TextEditor/SContextTextEditor.h"
 #include "Node/DF_Text.h"
 
@@ -20,7 +20,7 @@ UDialogueEdFragment_Text::UDialogueEdFragment_Text()
 }
 
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Text::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Text::SupportedNodeClass()
 {
 	return UDF_Text::StaticClass();
 }
@@ -28,7 +28,7 @@ TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Text::SupportedNodeClass()
 
 void UDialogueEdFragment_Text::ModifyGraphNodeSlate()
 {
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
@@ -49,7 +49,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 	
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
@@ -125,7 +125,7 @@ void UDialogueEdFragment_Text::OnTextChange(const FText& Text)
 	const FString Key = FTextInspector::GetKey(SavedText).Get(FString());
 	
 	//Holds new text and let engine caches this text in.
-	FJointEdUtils::DialogueText_StaticStableTextIdWithObj(
+	FJointEdUtils::JointText_StaticStableTextIdWithObj(
 		this,
 		IEditableTextProperty::ETextPropertyEditAction::EditedSource,
 		Text.ToString(),
@@ -161,7 +161,7 @@ void UDialogueEdFragment_Text::OnTextCommitted(const FText& Text, ETextCommit::T
 	const FString Key = FTextInspector::GetKey(SavedText).Get(FString());
 
 	//Holds new text and let engine caches this text in. This is fundamental when it comes to the 
-	FJointEdUtils::DialogueText_StaticStableTextIdWithObj(
+	FJointEdUtils::JointText_StaticStableTextIdWithObj( 
 		this,
 		IEditableTextProperty::ETextPropertyEditAction::EditedSource,
 		Text.ToString(),

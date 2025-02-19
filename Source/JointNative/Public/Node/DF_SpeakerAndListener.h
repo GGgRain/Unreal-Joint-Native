@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
 #include "DF_SpeakerAndListener.generated.h"
 
@@ -13,7 +13,7 @@ class UDF_Participant;
  * Useful when we have to display which participants are involved in the conversation.
  */
 UCLASS(Category = "Joint Native|C++|Participant", DisplayName="Speaker And Listener")
-class JOINTNATIVE_API UDF_SpeakerAndListener: public UDialogueFragment
+class JOINTNATIVE_API UDF_SpeakerAndListener: public UJointFragment
 {
 	GENERATED_BODY()
 
@@ -27,13 +27,13 @@ public:
 	 * The array of the speakers in the dialogue.
 	 */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Participant")
-	TArray<FDialogueNodePointer> Speakers;
+	TArray<FJointNodePointer> Speakers;
 	
 	/**
 	 * The array of the Listeners in the dialogue.
 	 */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Participant")
-	TArray<FDialogueNodePointer> Listeners;
+	TArray<FJointNodePointer> Listeners;
 	
 public:
 

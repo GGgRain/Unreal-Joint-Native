@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
 #include "DF_Sequence.generated.h"
 
@@ -13,14 +13,14 @@
  *
  */
 UCLASS(Category = "Joint Native|C++|Flow")
-class JOINTNATIVE_API UDF_Sequence: public UDialogueFragment
+class JOINTNATIVE_API UDF_Sequence: public UJointFragment
 {
 	GENERATED_BODY()
 
 public:
 
 	UDF_Sequence();
-	void SelectNodeAsPlayingNode(UDialogueNodeBase* SubNode);
+	void SelectNodeAsPlayingNode(UJointNodeBase* SubNode);
 
 	void PlayNextSubNode();
 
@@ -31,7 +31,7 @@ public:
 public:
 
 	UFUNCTION()
-	void OnSubNodePending(UDialogueNodeBase* InNode);
+	void OnSubNodePending(UJointNodeBase* InNode);
 
 	UPROPERTY()
 	int CurrentIndex = INDEX_NONE;

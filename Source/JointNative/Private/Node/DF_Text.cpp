@@ -9,7 +9,7 @@ UDF_Text::UDF_Text()
 #if WITH_EDITORONLY_DATA
 	bAllowDisplayClassFriendlyNameText = false;
 	TextStyleInstance.AllowedType.Add(UDF_TextStyle::StaticClass());
-	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Maximum;
+	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Maximum;
 
 	// bUseSpecifiedGraphNodeBodyColor = false;
 	// NodeBodyColor = FLinearColor(

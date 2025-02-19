@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
 #include "DF_Select.generated.h"
 
@@ -22,7 +22,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDFSelectSelectionChanged, const UD
  */
 
 UCLASS(Category = "Joint Native|C++|Flow")
-class JOINTNATIVE_API UDF_Select: public UDialogueFragment
+class JOINTNATIVE_API UDF_Select: public UJointFragment
 {
 	GENERATED_BODY()
 
@@ -34,7 +34,7 @@ public:
 
 	virtual void PostNodeBeginPlay_Implementation() override;
 	
-	virtual TArray<UDialogueNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<ADialogueActor>& InHostingDialogueInstance) override;
+	virtual TArray<UJointNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance) override;
 
 public:
 
@@ -47,7 +47,7 @@ public:
 public:
 	
 	UPROPERTY(AdvancedDisplay, VisibleAnywhere, BlueprintReadOnly, Category = "Select")
-	TArray<UDialogueNodeBase*> NextNodes;
+	TArray<UJointNodeBase*> NextNodes;
 
 private:
 

@@ -7,7 +7,7 @@
 #include "Components/ActorComponent.h"
 #include "DialogueParticipantComponent.generated.h"
 
-class UDialogueManager;
+class UJointManager;
 
 /**
  * Important Note for the all users and SDS1 users.

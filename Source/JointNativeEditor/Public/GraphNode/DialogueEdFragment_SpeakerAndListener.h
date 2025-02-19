@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/SubNode/DialogueEdGraphNode_Fragment.h"
+#include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_SpeakerAndListener.generated.h"
 
 class SScrollBox;
@@ -11,13 +11,13 @@ class SScrollBox;
  * 
  */
 UCLASS()
-class JOINTNATIVEEDITOR_API UDialogueEdFragment_SpeakerAndListener : public UDialogueEdGraphNode_Fragment
+class JOINTNATIVEEDITOR_API UDialogueEdFragment_SpeakerAndListener : public UJointEdGraphNode_Fragment
 {
 	GENERATED_BODY()
 
 public:
 
-	virtual TSubclassOf<UDialogueNodeBase> SupportedNodeClass() override;
+	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 
 	virtual void ModifyGraphNodeSlate() override;
 

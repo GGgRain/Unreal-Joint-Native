@@ -3,8 +3,8 @@
 
 #include "DialogueEdFragment_SpeakerAndListener.h"
 
-#include "Editor/Slate/GraphNode/DialogueGraphNodeSharedSlates.h"
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/JointGraphNodeSharedSlates.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Participant.h"
 #include "Node/DF_SpeakerAndListener.h"
@@ -16,7 +16,7 @@
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_SpeakerAndListener"
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_SpeakerAndListener::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_SpeakerAndListener::SupportedNodeClass()
 {
 	return UDF_SpeakerAndListener::StaticClass();
 }
@@ -25,7 +25,7 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	UDF_SpeakerAndListener* CastedNodeInstance = GetCastedNodeInstance<UDF_SpeakerAndListener>();
 
@@ -126,7 +126,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if (NodeSlate && NodeSlate->CenterContentBox)
 	{
@@ -142,7 +142,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 		{
 			if (!SpeakerAndListener->Listeners.IsValidIndex(i)) continue;
 
-			FDialogueNodePointer& Listener = SpeakerAndListener->Listeners[i];
+			FJointNodePointer& Listener = SpeakerAndListener->Listeners[i];
 
 			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(
 				TAttribute<FText>::FGetter::CreateLambda(
@@ -158,7 +158,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 			ListenersBox->AddSlot()
 			[
-				SNew(SDialogueNodePointerSlate)
+				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)
 				.GraphContextObject(this)
 				.DisplayName(DisplayText_Attr)
@@ -173,7 +173,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 		{
 			if (!SpeakerAndListener->Speakers.IsValidIndex(i)) continue;
 
-			FDialogueNodePointer& Speaker = SpeakerAndListener->Speakers[i];
+			FJointNodePointer& Speaker = SpeakerAndListener->Speakers[i];
 
 			const TAttribute<FText> DisplayText_Attr = TAttribute<FText>::Create(
 				TAttribute<FText>::FGetter::CreateLambda(
@@ -189,7 +189,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 			SpeakersBox->AddSlot()
 			[
-				SNew(SDialogueNodePointerSlate)
+				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)
 				.GraphContextObject(this)
 				.DisplayName(DisplayText_Attr)

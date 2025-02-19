@@ -2,7 +2,7 @@
 
 #include "DialogueEdFragment_TextStyle.h"
 
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_TextStyle.h"
 
@@ -23,7 +23,7 @@ bool UDialogueEdFragment_TextStyle::CanHaveSubNode() const
 	return false;
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_TextStyle::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_TextStyle::SupportedNodeClass()
 {
 	return UDF_TextStyle::StaticClass();
 }
@@ -33,7 +33,7 @@ void UDialogueEdFragment_TextStyle::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
@@ -63,7 +63,7 @@ void UDialogueEdFragment_TextStyle::UpdateSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{

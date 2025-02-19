@@ -4,8 +4,8 @@
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Participant.h"
 
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeSubNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeSubNodeBase.h"
 
 //VOLT
 
@@ -28,7 +28,7 @@ FText UDialogueEdFragment_Participant::GetNodeTitle(ENodeTitleType::Type TitleTy
 	//return FText::GetEmpty();
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Participant::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Participant::SupportedNodeClass()
 {
 	return UDF_Participant::StaticClass();
 }
@@ -38,7 +38,7 @@ void UDialogueEdFragment_Participant::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
@@ -70,7 +70,7 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeSubNodeBase> NodeSlate = StaticCastSharedPtr<SDialogueGraphNodeSubNodeBase>(
+	const TSharedPtr<SJointGraphNodeSubNodeBase> NodeSlate = StaticCastSharedPtr<SJointGraphNodeSubNodeBase>(
 		GetGraphNodeSlate().Pin());
 
 	if(NodeSlate && NodeSlate->CenterContentBox)

@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Node/DialogueFragment.h"
+#include "Node/JointFragment.h"
 
-#include "SharedType/DialogueSharedTypes.h"
+#include "SharedType/JointSharedTypes.h"
 #include "DF_Branch.generated.h"
 
 /**
@@ -23,7 +23,7 @@
  * Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead.
  */
 UCLASS(Category = "Joint Native|C++|Flow", Hidden, meta=(DeprecationMessage="Deprecated on Joint Native 1.6.0 : Not recommended to use anymore. Use DF_Branching instead."))
-class JOINTNATIVE_API UDF_Branch: public UDialogueFragment
+class JOINTNATIVE_API UDF_Branch: public UJointFragment
 {
 	GENERATED_BODY()
 	
@@ -33,12 +33,12 @@ public:
 
 	//Nodes that will be played when this node's condition check passes
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Nodes")
-	TArray<UDialogueNodeBase*> TrueNode;
+	TArray<UJointNodeBase*> TrueNode;
 
 
 	//Nodes that will be played when this node's condition check fails
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Nodes")
-	TArray<UDialogueNodeBase*> FalseNode;
+	TArray<UJointNodeBase*> FalseNode;
 
 
 public:
@@ -53,5 +53,5 @@ public:
 	
 public:
 	
-	virtual TArray<UDialogueNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<ADialogueActor>& InHostingDialogueInstance) override;
+	virtual TArray<UJointNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance) override;
 };

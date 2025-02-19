@@ -1,7 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
 #include "DF_Select.h"
-#include "DialogueActor.h"
+#include "JointActor.h"
 
 UDF_Select::UDF_Select()
 {
@@ -10,7 +10,7 @@ UDF_Select::UDF_Select()
 
 	bUseSpecifiedGraphNodeBodyColor = true;
 	NodeBodyColor = FLinearColor(0.4f, 0.2f, 0.5f, 0.400000);
-	DefaultEdSlateDetailLevel = EDialogueEdSlateDetailLevel::SlateDetailLevel_Stow;
+	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 
 
 #endif
@@ -24,10 +24,10 @@ void UDF_Select::PostNodeBeginPlay_Implementation()
 	Super::PreNodeBeginPlay_Implementation();
 }
 
-TArray<UDialogueNodeBase*> UDF_Select::SelectNextNodes_Implementation(
-	const TSoftObjectPtr<ADialogueActor>& InHostingDialogueInstance)
+TArray<UJointNodeBase*> UDF_Select::SelectNextNodes_Implementation(
+	const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance)
 {
-	return bIsSelected ? NextNodes : TArray<UDialogueNodeBase*>();
+	return bIsSelected ? NextNodes : TArray<UJointNodeBase*>();
 }
 
 bool UDF_Select::GetSelected() const

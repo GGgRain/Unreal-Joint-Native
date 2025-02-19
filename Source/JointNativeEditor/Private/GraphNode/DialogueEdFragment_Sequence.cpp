@@ -2,7 +2,7 @@
 
 #include "DialogueEdFragment_Sequence.h"
 
-#include "Editor/Slate/GraphNode/SDialogueGraphNodeBase.h"
+#include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Sequence.h"
 
@@ -14,7 +14,7 @@ UDialogueEdFragment_Sequence::UDialogueEdFragment_Sequence()
 	bUseFixedNodeSize = false;
 }
 
-TSubclassOf<UDialogueNodeBase> UDialogueEdFragment_Sequence::SupportedNodeClass()
+TSubclassOf<UJointNodeBase> UDialogueEdFragment_Sequence::SupportedNodeClass()
 {
 	return UDF_Sequence::StaticClass();
 }
@@ -23,7 +23,7 @@ void UDialogueEdFragment_Sequence::ModifyGraphNodeSlate()
 {
 	if (!GetGraphNodeSlate().IsValid()) return;
 
-	const TSharedPtr<SDialogueGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
+	const TSharedPtr<SJointGraphNodeBase> NodeSlate = GetGraphNodeSlate().Pin();
 
 	if(NodeSlate && NodeSlate->NameBox)
 	{
