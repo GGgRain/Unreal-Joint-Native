@@ -20,9 +20,11 @@ public:
 	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 
 	virtual void ModifyGraphNodeSlate() override;
-
+	
 	virtual void OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent, const FString& PropertyName) override;
-
+	
+public:
+	
 	void UpdateSlate();
 
 public:
@@ -30,5 +32,8 @@ public:
 	TSharedPtr<SScrollBox> SpeakersBox;
 	
 	TSharedPtr<SScrollBox> ListenersBox;
+
+public:
 	
+	static FText GetParticipantTextFor(const FJointNodePointer& Pointer);
 };

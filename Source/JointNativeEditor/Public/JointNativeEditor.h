@@ -19,7 +19,14 @@ public:
 	virtual void ShutdownModule() override;
 
 	virtual bool SupportsDynamicReloading() override;
+
+public:
+
+	void RegisterClassLayout();
+
+	void UnregisterClassLayout();
+	
 };
 
-//IMPLEMENT_MODULE(FJointEditorModule, JointEditor)
+IMPLEMENT_MODULE(FJointNativeEditorModule, JointNativeEditor)
 

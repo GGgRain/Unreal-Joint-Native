@@ -7,6 +7,8 @@
 
 #include "DF_SpeakerAndListener.generated.h"
 
+
+
 class UDF_Participant;
 /**
  * A default implementation of the speakers and listeners in the dialogue node.
@@ -21,7 +23,6 @@ public:
 
 	UDF_SpeakerAndListener();
 
-public:
 	
 	/**
 	 * The array of the speakers in the dialogue.
@@ -34,13 +35,29 @@ public:
 	 */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Participant")
 	TArray<FJointNodePointer> Listeners;
+
+public:
+
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<UDF_Participant*> GetSpeakerParticipants();
+
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<UDF_Participant*> GetListenerParticipants();
 	
 public:
 
-	UFUNCTION(BlueprintCallable, Category="Participant")
-	TArray<UDF_Participant*> GetAllSpeakers();
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<FJointNodePointer> GetSpeakers();
+
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<FJointNodePointer> GetListeners();
+
+public:
 
 	UFUNCTION(BlueprintCallable, Category="Participant")
-	TArray<UDF_Participant*> GetAllListeners();
-	
+	void SetSpeakers(TArray<FJointNodePointer> InSpeakers);
+
+	UFUNCTION(BlueprintCallable, Category="Participant")
+	void SetListeners(TArray<FJointNodePointer> InListeners);
+
 };

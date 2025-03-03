@@ -3,6 +3,8 @@
 
 #include "DialogueEdFragment_SpeakerAndListener.h"
 
+#include "IPropertyTable.h"
+#include "ISinglePropertyView.h"
 #include "Editor/Slate/GraphNode/JointGraphNodeSharedSlates.h"
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
@@ -19,6 +21,15 @@
 TSubclassOf<UJointNodeBase> UDialogueEdFragment_SpeakerAndListener::SupportedNodeClass()
 {
 	return UDF_SpeakerAndListener::StaticClass();
+}
+
+FText UDialogueEdFragment_SpeakerAndListener::GetParticipantTextFor(const FJointNodePointer& Pointer)
+{
+	if (Pointer.Node == nullptr) return LOCTEXT("NoParticipant", "No Participant Specified");
+	
+	if (const UDF_Participant* CastedNode = Cast<UDF_Participant>(Pointer.Node.Get())) return FText::FromString(CastedNode->ParticipantTag.ToString());
+
+	return LOCTEXT("NOTParticipant", "ERROR: NOT A PARICIPANT!");
 }
 
 void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()

@@ -20,13 +20,20 @@ void UDialogueEdFragment_Select::AllocateDefaultPins()
 {
 	PinData.Empty();
 
-	PinData.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output));
+	FJointEdPinDataSetting Settings;
+	Settings.bAlwaysDisplayNameText = true;
+	
+	PinData.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output, FJointEdPinData::PinType_Joint_Normal, Settings));
 }
 
 void UDialogueEdFragment_Select::ReallocatePins()
 {
 	TArray<FJointEdPinData> Array;
-	Array.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output));
+	
+	FJointEdPinDataSetting Settings;
+	Settings.bAlwaysDisplayNameText = true;
+	
+	Array.Add(FJointEdPinData("Out", EEdGraphPinDirection::EGPD_Output, FJointEdPinData::PinType_Joint_Normal, Settings));
 	
 	PinData = UJointFunctionLibrary::ImplementPins(PinData, Array);
 }

@@ -11,10 +11,11 @@ UDF_SpeakerAndListener::UDF_SpeakerAndListener()
 	bUseSpecifiedGraphNodeBodyColor = true;
 	NodeBodyColor = FLinearColor(0.05f, 0.15f, 0.2f, 0.4);
 	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+
 #endif
 }
 
-TArray<UDF_Participant*> UDF_SpeakerAndListener::GetAllSpeakers()
+TArray<UDF_Participant*> UDF_SpeakerAndListener::GetSpeakerParticipants()
 {
 	TArray<UDF_Participant*> OutArray;
 	
@@ -31,7 +32,7 @@ TArray<UDF_Participant*> UDF_SpeakerAndListener::GetAllSpeakers()
 	return OutArray;
 }
 
-TArray<UDF_Participant*> UDF_SpeakerAndListener::GetAllListeners()
+TArray<UDF_Participant*> UDF_SpeakerAndListener::GetListenerParticipants()
 {
 	TArray<UDF_Participant*> OutArray;
 	
@@ -47,4 +48,25 @@ TArray<UDF_Participant*> UDF_SpeakerAndListener::GetAllListeners()
 
 	return OutArray;
 
+}
+
+TArray<FJointNodePointer> UDF_SpeakerAndListener::GetSpeakers()
+{
+	return Speakers;
+}
+
+TArray<FJointNodePointer> UDF_SpeakerAndListener::GetListeners()
+{
+	return Listeners;
+}
+
+
+void UDF_SpeakerAndListener::SetSpeakers(TArray<FJointNodePointer> InSpeakers)
+{
+	Speakers = InSpeakers;
+}
+
+void UDF_SpeakerAndListener::SetListeners(TArray<FJointNodePointer> InListeners)
+{
+	Listeners = InListeners;
 }

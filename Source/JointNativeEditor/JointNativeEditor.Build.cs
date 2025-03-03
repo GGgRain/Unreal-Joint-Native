@@ -16,6 +16,7 @@ public class JointNativeEditor : ModuleRules
 
 				"JointNativeEditor/Public",
 				"JointNativeEditor/Public/GraphNode",
+				"JointNativeEditor/Public/Editor",
 
 			});
 
@@ -29,11 +30,14 @@ public class JointNativeEditor : ModuleRules
 				"Engine",
 				"UnrealEd",
 				
+				//Additional Dependencies.
+				
 				"Joint",
 				"JointNative",
 				"JointEditor",
 				
-				//Additional Dependencies.
+				"VoltCore",
+				"Volt",
 				
 				"AIGraph",
 				"PropertyEditor",
@@ -41,10 +45,9 @@ public class JointNativeEditor : ModuleRules
 				"SlateCore",
 				"Slate",
 				
-				"VoltCore",
-				"Volt",
-				
 				"LevelSequence",
+				
+				"ApplicationCore"
 			});
 
 			PublicDependencyModuleNames.AddRange(new string[]
@@ -57,6 +60,9 @@ public class JointNativeEditor : ModuleRules
 				"Joint",
 				"JointNative",
 				"JointEditor",
+				
+				"VoltCore",
+				"Volt",
 			});
 
 	}
