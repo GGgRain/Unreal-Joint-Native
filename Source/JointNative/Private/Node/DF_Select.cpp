@@ -23,7 +23,7 @@ void UDF_Select::PostNodeBeginPlay_Implementation()
 }
 
 TArray<UJointNodeBase*> UDF_Select::SelectNextNodes_Implementation(
-	const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance)
+	AJointActor* InHostingDialogueInstance)
 {
 	return bIsSelected ? NextNodes : TArray<UJointNodeBase*>();
 }

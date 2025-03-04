@@ -12,7 +12,7 @@ UDF_Branch::UDF_Branch()
 	//Condition node can be attached anywhere.
 }
 
-TArray<UJointNodeBase*> UDF_Branch::SelectNextNodes_Implementation(const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance)
+TArray<UJointNodeBase*> UDF_Branch::SelectNextNodes_Implementation(AJointActor* InHostingDialogueInstance)
 {
 
 	if(!IsNodeBegunPlay())

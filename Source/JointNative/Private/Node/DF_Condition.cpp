@@ -37,7 +37,7 @@ void UDF_Condition::PlayNextSubNode()
 		return;	
 	}
 	
-	if (!GetHostingJointInstance().IsValid()) return;
+	if (!GetHostingJointInstance()) return;
 
 	CurrentIndex++;
 

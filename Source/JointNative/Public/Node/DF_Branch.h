@@ -53,5 +53,5 @@ public:
 	
 public:
 	
-	virtual TArray<UJointNodeBase*> SelectNextNodes_Implementation(const TSoftObjectPtr<AJointActor>& InHostingDialogueInstance) override;
+	virtual TArray<UJointNodeBase*> SelectNextNodes_Implementation(AJointActor* InHostingDialogueInstance) override;
 };

@@ -31,7 +31,7 @@ void UDF_Sequence::SelectNodeAsPlayingNode(UJointNodeBase* SubNode)
 
 void UDF_Sequence::PlayNextSubNode()
 {
-	if (!GetHostingJointInstance().IsValid()) return;
+	if (!GetHostingJointInstance()) return;
 
 	CurrentIndex++;
 

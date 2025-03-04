@@ -7,13 +7,26 @@
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Condition.h"
 
+#include "JointVersionComparison.h"
+
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Condition"
 
 UDialogueEdFragment_Condition::UDialogueEdFragment_Condition()
 {
+
+#if JOINT_VERSION_NEWER_THAN(2,7,0)
+
+	NodeWidth = JointGraphNodeResizableDefs::MaxFragmentSize.X;
+	NodeHeight = JointGraphNodeResizableDefs::MaxFragmentSize.Y;
+	
+#else
+
 	NodeWidth = 200;
 	NodeHeight = 200;
+	
+#endif
+	
 }
 
 void UDialogueEdFragment_Condition::ModifyGraphNodeSlate()
