@@ -2,15 +2,10 @@
 
 #include "Editor/JointManagementTabs_Native.h"
 
-#include "JointManager.h"
-
 #include "Editor/Slate/JointAdvancedWidgets.h"
 #include "Editor/Style/JointEditorStyle.h"
-#include "Framework/Notifications/NotificationManager.h"
-#include "Node/DF_SpeakerAndListener.h"
 
 #include "Widgets/Layout/SScrollBox.h"
-#include "Widgets/Notifications/SNotificationList.h"
 
 #define LOCTEXT_NAMESPACE "FJointManagementTab_JointNativeUtility"
 
@@ -37,9 +32,9 @@ void FJointManagementTab_JointNativeUtility::RegisterTabSpawner(const TSharedPtr
 				{
 					return SNew(SDockTab)
 						.TabRole(ETabRole::PanelTab)
-						.Label(LOCTEXT("JointNativeUtility", "Joint Native Utility"))
+						.Label(LOCTEXT("JointYggdrasilUtility", "Joint Native Utility"))
 						[
-							SNew(SJointNativeUtilityTab)
+							SNew(SJointNativeTab)
 						];
 				}
 			)
@@ -72,7 +67,7 @@ const ETabState::Type FJointManagementTab_JointNativeUtility::GetInitialTabState
 #endif
 
 
-TSharedRef<SWidget> SJointNativeUtilityTab::CreateProductSection()
+TSharedRef<SWidget> SJointNativeTab::CreateProductSection()
 {
 	return SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
@@ -107,7 +102,7 @@ TSharedRef<SWidget> SJointNativeUtilityTab::CreateProductSection()
 		];
 }
 
-void SJointNativeUtilityTab::Construct(const FArguments& InArgs)
+void SJointNativeTab::Construct(const FArguments& InArgs)
 {
 	ChildSlot.DetachWidget();
 

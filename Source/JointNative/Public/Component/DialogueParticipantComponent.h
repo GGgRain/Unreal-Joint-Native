@@ -7,6 +7,7 @@
 #include "Components/ActorComponent.h"
 #include "DialogueParticipantComponent.generated.h"
 
+class UDialogueParticipantModuleItem;
 class UJointManager;
 
 /**
@@ -47,7 +48,10 @@ public:
 
 public:
 
-	
-	
+	/**
+	 * Module items that will be attached to the Dialogue Participant Modules.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SpeechBubble")
+	TArray<TObjectPtr<class UDialogueParticipantModuleItem>> ParticipantModules;
 	
 };

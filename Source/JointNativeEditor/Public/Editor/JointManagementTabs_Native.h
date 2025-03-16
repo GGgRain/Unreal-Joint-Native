@@ -34,12 +34,12 @@ public:
 /**
  * Content widget for the FJointManagementTab_JointNativeUtility. it's just a pure slate. make something like this for your own extension.
  */
-class JOINTNATIVEEDITOR_API SJointNativeUtilityTab : public SCompoundWidget
+class JOINTNATIVEEDITOR_API SJointNativeTab : public SCompoundWidget
 {
 	
 public:
 
-	SLATE_BEGIN_ARGS(SJointNativeUtilityTab) {}
+	SLATE_BEGIN_ARGS(SJointNativeTab) {}
 	SLATE_END_ARGS();
 	
 	void Construct(const FArguments& InArgs);

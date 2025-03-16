@@ -21,7 +21,17 @@ UDF_Text::UDF_Text()
 #endif
 }
 
-UDataTable* UDF_Text::GetTextStyleTableIfPresent() const
+const FText UDF_Text::GetText_Implementation() const
+{
+	return Text;
+}
+
+void UDF_Text::SetText_Implementation(const FText& InText)
+{
+	Text = InText;
+}
+
+UDataTable* UDF_Text::GetTextStyleTableIfPresent_Implementation() const
 {
 	if(TextStyleInstance.Node)
 	{

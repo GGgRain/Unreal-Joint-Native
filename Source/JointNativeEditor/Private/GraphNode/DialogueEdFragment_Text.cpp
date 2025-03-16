@@ -72,7 +72,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 			{
 				UDataTable* Value = nullptr;
 
-				if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent();
+				if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent_Implementation();
 				
 				return Value;
 			}));
@@ -80,9 +80,9 @@ void UDialogueEdFragment_Text::UpdateSlate()
 		const TAttribute<bool> bUseStyler_Attr = TAttribute<bool>::Create(
 		TAttribute<bool>::FGetter::CreateLambda([this]
 		{
-			UDataTable* Value = nullptr;
+			const UDataTable* Value = nullptr;
 
-			if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent();
+			if (const UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>()) Value = CastedNode->GetTextStyleTableIfPresent_Implementation();
 
 			return ((Value != nullptr) ? true : false);
 			
