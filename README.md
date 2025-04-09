@@ -33,7 +33,7 @@
 
 ## :mag: About ##
 
-Joint-Native is the official plugin that extends [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) by providing essential nodes, widgets, sample levels, and assets designed for creating various conversation scripting systems within Unreal Engine. This plugin is essential for developers aiming to implement conversation-based interactions and functionality efficiently.
+Joint-Native is the official plugin that extends [Joint](https://github.com/GGgRain/Unreal-Joint) by providing essential nodes, widgets, sample levels, and assets designed for creating various conversation scripting systems within Unreal Engine. This plugin is essential for developers aiming to implement conversation-based interactions and functionality efficiently.
 
 <p align="center">
   <i>Please consider leaving a star if you loved this project! </i>⭐
@@ -41,12 +41,12 @@ Joint-Native is the official plugin that extends [Joint](https://www.unrealengin
 
 ## :clipboard: Dependencies ##
 
-This plugin relies on the [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) plugin. Ensure that you’ve purchased and installed Joint into your project before proceeding with the installation of Joint-Native.
+This plugin relies on the [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) plugin. Ensure that you’ve installed Joint into your project before proceeding with the installation of Joint-Native.
 
 ## :inbox_tray: Installation & Necessary Setting Up ##
 
 ### Steps:
-1. Purchase and enable [Joint](https://www.unrealengine.com/marketplace/ko/product/ec432b9261c94b70a4068507d42a4f5a) on your project.
+1. Download [Joint](https://github.com/GGgRain/Unreal-Joint) on your project. Follow the description on the GitHub repository. (Now it's free to install!!)
 2. Download this repository as a zip file or clone it to your workstation, then unzip the folder and rename it to `Joint-Native`.
 3. Place the unzipped `Joint-Native` folder into the `Plugins` directory of your Unreal project. If this directory doesn’t exist, create it.
 4. Launch your project and confirm it runs successfully. If you see a prompt asking about building modules, click **Yes**.
