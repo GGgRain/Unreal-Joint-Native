@@ -2,16 +2,29 @@
 
 #include "DF_Select.h"
 #include "JointActor.h"
+#include "JointVersionComparison.h"
 
 UDF_Select::UDF_Select()
 {
 
 #if WITH_EDITORONLY_DATA
 
+#if JOINT_VERSION_OLDER_THAN(2, 9, 0)
+	
 	bUseSpecifiedGraphNodeBodyColor = true;
 	NodeBodyColor = FLinearColor(0.4f * 0.7, 0.2f * 0.7, 0.5f * 0.7, 0.400000);
 	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
+	
+#else
+
+	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
+	EdNodeSetting.NodeBodyColor = FLinearColor(0.4f * 0.7, 0.2f * 0.7, 0.5f * 0.7, 0.400000);
+	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
+	
 #endif
+	
+#endif
+
 	
 }
 

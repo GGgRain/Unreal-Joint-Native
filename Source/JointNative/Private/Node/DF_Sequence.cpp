@@ -2,22 +2,25 @@
 
 
 #include "DF_Sequence.h"
-
 #include "JointActor.h"
+
+#include "JointVersionComparison.h"
 
 UDF_Sequence::UDF_Sequence()
 {
 
 #if WITH_EDITORONLY_DATA
-
-	// bUseSpecifiedGraphNodeBodyColor = true;
-	// NodeBodyColor = FLinearColor(
-	// 	2.4f / 255.f,
-	// 	2.4f / 255.f,
-	// 	2.9f / 255.f,
-	// 	225.f / 255.f);
+	
+#if JOINT_VERSION_OLDER_THAN(2, 9, 0)
+	
 	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+	
+#else
 
+	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
+
+#endif
+	
 #endif
 	
 }

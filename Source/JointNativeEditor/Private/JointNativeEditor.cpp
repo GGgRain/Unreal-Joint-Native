@@ -12,13 +12,14 @@
 
 void FJointNativeEditorModule::StartupModule()
 {
-	
-	FJointEditorModule& EditorModule = FModuleManager::GetModuleChecked<FJointEditorModule>("JointEditor");
 
-	EditorModule.JointManagementTabHandler->AddSubTab(FJointManagementTab_JointNativeUtility::MakeInstance());
+	if (FJointEditorModule* EditorModule = FJointEditorModule::Get())
+	{
+		EditorModule->JointManagementTabHandler->AddSubTab(FJointManagementTab_JointNativeUtility::MakeInstance());
+	}
+	
 
 	RegisterClassLayout();
-
 }
 
 
@@ -32,15 +33,12 @@ void FJointNativeEditorModule::RegisterClassLayout()
 	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 
 	//Class Detail Customization
-	
 }
 
 void FJointNativeEditorModule::UnregisterClassLayout()
 {
 	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	
 }
-
 
 
 bool FJointNativeEditorModule::SupportsDynamicReloading()

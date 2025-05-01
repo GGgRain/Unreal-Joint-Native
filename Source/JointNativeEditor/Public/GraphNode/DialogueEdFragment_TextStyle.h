@@ -6,6 +6,7 @@
 #include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_TextStyle.generated.h"
 
+class SVerticalBox;
 class UVoltAnimationManager;
 class SScrollBox;
 /**

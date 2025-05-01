@@ -4,6 +4,7 @@
 #include "DF_Participant.h"
 
 #include "JointNativeFunctionLibrary.h"
+#include "Engine/World.h"
 #include "Net/UnrealNetwork.h"
 
 UDF_Participant::UDF_Participant()

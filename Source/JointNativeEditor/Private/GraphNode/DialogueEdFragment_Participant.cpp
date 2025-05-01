@@ -13,6 +13,7 @@
 #include "VoltDecl.h"
 #include "Module/Volt_ASM_InterpRenderOpacity.h"
 #include "Module/Volt_ASM_InterpWidgetTransform.h"
+#include "Widgets/Images/SImage.h"
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Participant"
 
@@ -46,7 +47,7 @@ void UDialogueEdFragment_Participant::ModifyGraphNodeSlate()
 
 		NodeSlate->CenterContentBox->AddSlot()
 			.HAlign(HAlign_Fill)
-			.Padding(FJointEditorStyle::Margin_Frame)
+			.Padding(FJointEditorStyle::Margin_Normal)
 			[
 				ParticipantBox.ToSharedRef()
 			];
@@ -84,7 +85,7 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 			.Visibility(EVisibility::HitTestInvisible)
 			.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
 			.BorderBackgroundColor(GetNodeBodyTintColor())
-			.Padding(FJointEditorStyle::Margin_Border)
+			.Padding(FJointEditorStyle::Margin_Normal)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Center)
 			[
@@ -98,7 +99,7 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 					.AutoWidth()
 					//.HAlign(HAlign_Right)
 					.VAlign(VAlign_Center)
-					.Padding(FJointEditorStyle::Margin_Frame)
+					.Padding(FJointEditorStyle::Margin_Normal)
 					[
 						SNew(SBox)
 						.HeightOverride(16)

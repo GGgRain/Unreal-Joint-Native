@@ -4,8 +4,11 @@
 #include "JointNativeFunctionLibrary.h"
 #include "GameplayTagContainer.h"
 #include "ICUTransliteratorWrapper.h"
+#include "SceneView.h"
 #include "Component/DialogueParticipantComponent.h"
+#include "Engine/LocalPlayer.h"
 #include "Kismet/GameplayStatics.h"
+#include "UObject/UObjectIterator.h"
 
 UDialogueParticipantComponent* UJointNativeFunctionLibrary::FindFirstParticipantComponent(
 	UObject* WorldContextObject, FGameplayTag TargetParticipantTag)

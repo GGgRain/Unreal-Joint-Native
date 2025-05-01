@@ -2,7 +2,7 @@
 
 #include "JointNative.h"
 
-#define LOCTEXT_NAMESPACE "FJointModule"
+#define LOCTEXT_NAMESPACE "FJointNativeModule"
 
 void FJointNativeModule::StartupModule()
 {

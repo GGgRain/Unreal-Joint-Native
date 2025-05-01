@@ -2,8 +2,9 @@
 
 
 #include "DF_Condition.h"
-
 #include "JointActor.h"
+
+#include "JointVersionComparison.h"
 
 UDF_Condition::UDF_Condition()
 {
@@ -12,11 +13,24 @@ UDF_Condition::UDF_Condition()
 	
 	//Condition node can be attached anywhere.
 #if WITH_EDITORONLY_DATA
+
+#if JOINT_VERSION_OLDER_THAN(2, 9, 0)
+	
 	bAllowDisplayClassFriendlyNameText = true;
 	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	bUseSpecifiedGraphNodeBodyColor = true;
 	NodeBodyColor = FLinearColor(0.078125, 0.001330,0.013824, 0.700000);
 	
+#else
+
+	EdNodeSetting.bAllowDisplayClassFriendlyNameText = true;
+	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
+	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
+	EdNodeSetting.NodeBodyColor = FLinearColor(0.078125, 0.001330,0.013824, 0.700000);
+	
+#endif
+
+
 #endif
 }
 

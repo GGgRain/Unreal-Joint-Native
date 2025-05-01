@@ -2,9 +2,11 @@
 
 #include "DialogueEdFragment_Sequence.h"
 
+#include "Components/HorizontalBox.h"
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Sequence.h"
+#include "Widgets/Images/SImage.h"
 
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Random"
@@ -31,7 +33,7 @@ void UDialogueEdFragment_Sequence::ModifyGraphNodeSlate()
 		.AutoWidth()
 		.HAlign(HAlign_Right)
 		.VAlign(VAlign_Center)
-		.Padding(FJointEditorStyle::Margin_Border)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		[
 			SNew(SBox)
 			.Visibility(EVisibility::SelfHitTestInvisible)

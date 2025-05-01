@@ -89,7 +89,7 @@ void UDialogueEdFragment_SpeakerAndListener::ModifyGraphNodeSlate()
 					SNew(SBorder)
 					.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Border.Round"))
 					.BorderBackgroundColor(FJointEditorStyle::Color_Normal * 0.5)
-					.Padding(FJointEditorStyle::Margin_Frame)
+					.Padding(FJointEditorStyle::Margin_Normal)
 					.Visibility(EVisibility::HitTestInvisible)
 					[
 						SNew(STextBlock)

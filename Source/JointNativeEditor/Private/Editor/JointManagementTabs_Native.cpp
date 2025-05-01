@@ -4,6 +4,7 @@
 
 #include "Editor/Slate/JointAdvancedWidgets.h"
 #include "Editor/Style/JointEditorStyle.h"
+#include "Widgets/Docking/SDockTab.h"
 
 #include "Widgets/Layout/SScrollBox.h"
 
@@ -25,6 +26,15 @@ TSharedRef<IJointManagementSubTab> FJointManagementTab_JointNativeUtility::MakeI
 
 void FJointManagementTab_JointNativeUtility::RegisterTabSpawner(const TSharedPtr<FTabManager>& TabManager)
 {
+	TSharedPtr<FWorkspaceItem> JointNativeEditorGroup = GetParentTabHandler().Pin()->GetActiveGroupFor("JointNativeEditor");
+	
+	if(!JointNativeEditorGroup)
+	{
+		JointNativeEditorGroup = TabManager->AddLocalWorkspaceMenuCategory(LOCTEXT("JointNativeEditorGroupName", "Joint Native Editor"));
+
+		GetParentTabHandler().Pin()->AddActiveGroup("JointNativeEditor", JointNativeEditorGroup);
+	}
+	
 	TabManager->RegisterTabSpawner(
 			GetTabId()
 			, FOnSpawnTab::CreateLambda(
@@ -41,6 +51,7 @@ void FJointManagementTab_JointNativeUtility::RegisterTabSpawner(const TSharedPtr
 		)
 		.SetDisplayName(LOCTEXT("EditorUtilityTabTitle", "Joint Native Utility"))
 		.SetTooltipText(LOCTEXT("EditorUtilityTooltipText", "Open the Joint Native Utility tab."))
+		.SetGroup(JointNativeEditorGroup.ToSharedRef())
 		.SetIcon(FSlateIcon(FJointEditorStyle::GetUEEditorSlateStyleSetName(), "ExternalImagePicker.GenerateImageButton"));
 }
 
@@ -72,7 +83,7 @@ TSharedRef<SWidget> SJointNativeTab::CreateProductSection()
 	return SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
 		.AutoHeight()
-		.Padding(FJointEditorStyle::Margin_Border)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		.HAlign(HAlign_Left)
 		.VAlign(VAlign_Center)
 		[
@@ -82,7 +93,7 @@ TSharedRef<SWidget> SJointNativeTab::CreateProductSection()
 		]
 		+ SVerticalBox::Slot()
 		.AutoHeight()
-		.Padding(FJointEditorStyle::Margin_Border)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		.HAlign(HAlign_Left)
 		.VAlign(VAlign_Center)
 		[
@@ -92,7 +103,7 @@ TSharedRef<SWidget> SJointNativeTab::CreateProductSection()
 		]
 		+ SVerticalBox::Slot()
 		.AutoHeight()
-		.Padding(FJointEditorStyle::Margin_Border)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		.HAlign(HAlign_Left)
 		.VAlign(VAlign_Center)
 		[
@@ -110,13 +121,14 @@ void SJointNativeTab::Construct(const FArguments& InArgs)
 	[
 		SNew(SBorder)
 		.BorderImage(FJointEditorStyle::Get().GetBrush("JointUI.Image.GraphBackground"))
-		.Padding(FJointEditorStyle::Margin_Border)
+		.BorderBackgroundColor(FJointEditorStyle::Color_Node_TabBackground)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		.HAlign(HAlign_Fill)
 		.VAlign(VAlign_Top)
 		[
 			SNew(SScrollBox)
 			+ SScrollBox::Slot()
-			.Padding(FJointEditorStyle::Margin_Border)
+			.Padding(FJointEditorStyle::Margin_Normal)
 			.HAlign(HAlign_Left)
 			.VAlign(VAlign_Top)
 			[

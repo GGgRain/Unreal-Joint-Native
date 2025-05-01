@@ -6,6 +6,7 @@
 #include "Node/SubNode/JointEdGraphNode_Fragment.h"
 #include "DialogueEdFragment_Text.generated.h"
 
+class SVerticalBox;
 class SContextTextEditor;
 /**
  * 

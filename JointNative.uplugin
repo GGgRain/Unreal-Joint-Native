@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 21,
-	"VersionName": "1.12.2",
+	"Version": 22,
+	"VersionName": "1.13.0",
 	"FriendlyName": "Joint Native",
 	"Description": "The basic contents for Joint, including nodes, widgets, Use-cases and samples for various project styles.",
 	"Category": "Conversation",
@@ -18,18 +18,12 @@
 		{
 			"Name": "JointNative",
 			"Type": "Runtime",
-			"LoadingPhase": "PreDefault",
-			"PlatformAllowList": [
-				"Win64"
-			]
+			"LoadingPhase": "PreDefault"
 		},
 		{
 			"Name": "JointNativeEditor",
 			"Type": "Editor",
-			"LoadingPhase": "Default",
-			"PlatformAllowList": [
-				"Win64"
-			]
+			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [

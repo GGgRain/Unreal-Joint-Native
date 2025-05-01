@@ -3,6 +3,7 @@
 
 #include "DialogueEdFragment_Text.h"
 
+#include "Editor.h"
 #include "Editor/JointEdUtils.h"
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Slate/TextEditor/SContextTextEditor.h"

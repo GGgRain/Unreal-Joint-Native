@@ -8,6 +8,8 @@
 #include "Node/DF_Condition.h"
 
 #include "JointVersionComparison.h"
+#include "Components/HorizontalBox.h"
+#include "Widgets/Images/SImage.h"
 
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Condition"
@@ -41,7 +43,7 @@ void UDialogueEdFragment_Condition::ModifyGraphNodeSlate()
 		.AutoWidth()
 		.HAlign(HAlign_Right)
 		.VAlign(VAlign_Center)
-		.Padding(FJointEditorStyle::Margin_Border)
+		.Padding(FJointEditorStyle::Margin_Normal)
 		[
 			SNew(SBox)
 			.Visibility(EVisibility::HitTestInvisible)
