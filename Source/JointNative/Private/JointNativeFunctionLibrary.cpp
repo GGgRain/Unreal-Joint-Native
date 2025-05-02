@@ -72,7 +72,7 @@ void UJointNativeFunctionLibrary::ProjectWorldPositionToScreenPosition(const UOb
                                                                        const FVector& InWorldPosition,
                                                                        FVector2D& ScreenPos)
 {
-	FVector Projected;
+	FVector Projected = FVector::ZeroVector;
 
 	bool bTargetBehindCamera = false;
 
