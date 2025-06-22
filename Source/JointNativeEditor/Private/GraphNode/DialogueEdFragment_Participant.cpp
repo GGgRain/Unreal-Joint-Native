@@ -1,6 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
-#include "DialogueEdFragment_Participant.h"
+#include "GraphNode/DialogueEdFragment_Participant.h"
+
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Participant.h"
 
@@ -8,6 +9,8 @@
 #include "Editor/Slate/GraphNode/SJointGraphNodeSubNodeBase.h"
 
 //VOLT
+
+#include "GraphNode/DialogueEdFragment_Participant.h"
 
 #include "VoltAnimationManager.h"
 #include "VoltDecl.h"

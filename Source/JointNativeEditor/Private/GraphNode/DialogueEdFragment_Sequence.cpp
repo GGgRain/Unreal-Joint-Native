@@ -1,6 +1,6 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
-#include "DialogueEdFragment_Sequence.h"
+#include "GraphNode/DialogueEdFragment_Sequence.h"
 
 #include "Components/HorizontalBox.h"
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"

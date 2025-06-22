@@ -1,7 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
 
-#include "DialogueEdFragment_Branch.h"
+#include "GraphNode/DialogueEdFragment_Branch.h"
 
 #include "JointManager.h"
 #include "Misc/UObjectToken.h"

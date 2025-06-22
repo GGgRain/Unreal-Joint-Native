@@ -1,6 +1,6 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
-#include "DialogueEdFragment_Select.h"
+#include "GraphNode/DialogueEdFragment_Select.h"
 
 #include "JointFunctionLibrary.h"
 #include "Node/DF_Select.h"

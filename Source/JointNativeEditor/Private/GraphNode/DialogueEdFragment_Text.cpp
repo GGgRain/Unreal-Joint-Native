@@ -1,7 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
 
-#include "DialogueEdFragment_Text.h"
+#include "GraphNode/DialogueEdFragment_Text.h"
 
 #include "Editor.h"
 #include "Editor/JointEdUtils.h"

@@ -1,6 +1,6 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
-#include "DialogueEdFragment_TextStyle.h"
+#include "GraphNode/DialogueEdFragment_TextStyle.h"
 
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"

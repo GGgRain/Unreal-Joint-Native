@@ -19,16 +19,6 @@ public class JointNative : ModuleRules
 
 			}
 			);
-				
-		
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				// ... add other private include paths required here ...
-				"JointNative",
-				"JointNative/Public",
-				"JointNative/Public/Node",
-			}
-			);
 			
 		
 		PublicDependencyModuleNames.AddRange(

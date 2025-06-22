@@ -1,7 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
 
-#include "DialogueEdFragment_Condition.h"
+#include "GraphNode/DialogueEdFragment_Condition.h"
 
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"

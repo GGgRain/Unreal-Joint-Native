@@ -1,7 +1,7 @@
 //Copyright 2022~2024 DevGrain. All Rights Reserved.
 
 
-#include "DialogueEdFragment_SpeakerAndListener.h"
+#include "GraphNode/DialogueEdFragment_SpeakerAndListener.h"
 
 #include "IPropertyTable.h"
 #include "ISinglePropertyView.h"
