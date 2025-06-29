@@ -4,7 +4,7 @@
 
 <div align="center">
   <h1>Joint-Native</h1>
-  <h3>Official Advanced Narrative Extension Plugin for Joint</h3>
+  <h3>Official Extension Plugin for Joint - for Highly Customizable Advanced Narrative System</h3>
 </div>
 
 <p align="center">
