@@ -33,7 +33,7 @@
 
 ## :mag: About ##
 
-Joint-Native is the official plugin that extends [Joint](https://github.com/GGgRain/Unreal-Joint) by providing essential nodes, widgets, sample levels, and assets designed for creating various conversation scripting systems within Unreal Engine. This plugin is essential for developers aiming to implement conversation-based interactions and functionality efficiently.
+Joint-Native is the official extension plugin that extends [Joint](https://github.com/GGgRain/Unreal-Joint) by providing essential nodes, widgets, sample levels, and assets designed for creating various conversation scripting systems within Unreal Engine. This plugin is essential for developers aiming to implement conversation-based interactions and functionality efficiently.
 
 The Dialogue System provided in this Git repository is an advanced tool designed to empower developers and storytellers to create highly customizable and dynamic narrative experiences. It supports a wide range of applications, from simple dialogues to complex, interactive storytelling systems inspired by games like Hogwarts Legacy or The Witcher 3. The system offers maximum control over participants, events, and the surrounding world, enabling intricate narrative designs.
 
