@@ -17,9 +17,15 @@ UDialogueParticipantComponent* UJointNativeFunctionLibrary::FindFirstParticipant
 	{
 		for (TObjectIterator<UDialogueParticipantComponent> Itr; Itr; ++Itr)
 		{
-			if (Itr->GetWorld() != World) { continue; }
+			UDialogueParticipantComponent* Comp = *Itr;
 
-			if (Itr->ParticipantTag.HasTag(TargetParticipantTag)) return *Itr;
+			if (!Comp || !IsValid(Comp)) { continue; }
+			
+			if (Comp->GetWorld() != World) { continue; }
+			
+			// check if it was been marked for GC (if the name was TRASH_...)
+			
+			if (Comp->ParticipantTag.HasTag(TargetParticipantTag)) return *Itr;
 		}
 	}
 
@@ -32,20 +38,22 @@ TArray<UDialogueParticipantComponent*> UJointNativeFunctionLibrary::FindParticip
 	const UWorld* World = WorldContextObject->GetWorld();
 
 
-	TArray<UDialogueParticipantComponent*> Comps;
+	TSet<UDialogueParticipantComponent*> Comps;
 
 	for (TObjectIterator<UDialogueParticipantComponent> Itr; Itr; ++Itr)
 	{
-		if (Itr->GetWorld() != World) continue;
+		UDialogueParticipantComponent* Comp = *Itr;
 
-		if (!Itr->ParticipantTag.HasTag(TargetParticipantTag)) continue;
+		if (!Comp || !IsValid(Comp)) { continue; }
+			
+		if (Comp->GetWorld() != World) { continue; }
 
-		if (Comps.Contains(*Itr)) continue;
-
-		Comps.Add(*Itr);
+		if (!Comp->ParticipantTag.HasTag(TargetParticipantTag)) continue;
+		
+		Comps.Add(Comp);
 	}
 
-	return Comps;
+	return Comps.Array();
 }
 
 TArray<UDialogueParticipantComponent*> UJointNativeFunctionLibrary::GetAllParticipantComponents(
@@ -53,19 +61,22 @@ TArray<UDialogueParticipantComponent*> UJointNativeFunctionLibrary::GetAllPartic
 {
 	const UWorld* World = WorldContextObject->GetWorld();
 
-	TArray<UDialogueParticipantComponent*> Comps;
+	TSet<UDialogueParticipantComponent*> Comps;
 
 	for (TObjectIterator<UDialogueParticipantComponent> Itr; Itr; ++Itr)
 	{
-		if (Itr->GetWorld() != World) { continue; }
+		UDialogueParticipantComponent* Comp = *Itr;
 
-		if (Comps.Contains(*Itr)) { continue; }
-
-		Comps.Add(*Itr);
+		if (!Comp || !IsValid(Comp)) { continue; }
+			
+		if (Comp->GetWorld() != World) { continue; }
+		
+		Comps.Add(Comp);
 	}
 
-	return Comps;
+	return Comps.Array();
 }
+
 
 
 void UJointNativeFunctionLibrary::ProjectWorldPositionToScreenPosition(const UObject* WorldContextObject,
