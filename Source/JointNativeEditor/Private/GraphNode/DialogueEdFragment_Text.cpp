@@ -17,7 +17,7 @@ UDialogueEdFragment_Text::UDialogueEdFragment_Text()
 	NodeWidth = 0;
 	NodeHeight = 0;
 
-	bUseFixedNodeSize = false;
+	bIsNodeResizeable = false;
 }
 
 

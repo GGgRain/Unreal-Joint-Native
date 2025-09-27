@@ -9,7 +9,6 @@
 #include "Engine/LocalPlayer.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/UObjectIterator.h"
-
 UDialogueParticipantComponent* UJointNativeFunctionLibrary::FindFirstParticipantComponent(
 	UObject* WorldContextObject, FGameplayTag TargetParticipantTag)
 {
@@ -76,7 +75,6 @@ TArray<UDialogueParticipantComponent*> UJointNativeFunctionLibrary::GetAllPartic
 
 	return Comps.Array();
 }
-
 
 
 void UJointNativeFunctionLibrary::ProjectWorldPositionToScreenPosition(const UObject* WorldContextObject,

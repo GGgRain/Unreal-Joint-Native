@@ -13,7 +13,7 @@ UDialogueEdFragment_Select::UDialogueEdFragment_Select()
 	NodeWidth = 0;
 	NodeHeight = 0;
 
-	bUseFixedNodeSize = false;
+	bIsNodeResizeable = false;
 }
 
 void UDialogueEdFragment_Select::AllocateDefaultPins()
@@ -62,23 +62,12 @@ void UDialogueEdFragment_Select::NodeConnectionListChanged()
 		if (FoundPin == nullptr) continue;
 
 		//Iterate through the connected pins on the replicated pin.
-		for (const UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
+		for (UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
 		{
-			if (LinkedTo == nullptr) continue;
-
-			//Check the connected node and cast it to UDialogueEdGraphNode.
-			if (LinkedTo->GetOwningNode() == nullptr) continue;
-			
-			UEdGraphNode* ConnectedNode = LinkedTo->GetOwningNode();
-
-			if (!ConnectedNode) continue;
-			
-			UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
-
-			if (!CastedGraphNode) continue;
-
-			//Get the actual node instances from the connected node and allocate it on the Next Nodes.
-			CastedGraphNode->AllocateReferringNodeInstancesOnConnection(CastedNode->NextNodes);
+			if (UJointEdGraphNode* LinkedPinOwner = CastPinOwnerToJointEdGraphNode(LinkedTo))
+			{
+				LinkedPinOwner->AllocateReferringNodeInstancesOnConnection(CastedNode->NextNodes, LinkedTo);
+			}
 		}
 	}
 }

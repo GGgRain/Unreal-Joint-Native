@@ -131,40 +131,22 @@ void UDialogueEdFragment_Branch::NodeConnectionListChanged()
 
 		if (FoundPin->PinName == "True")
 		{
-			for (const UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
+			for (UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
 			{
-				if (LinkedTo == nullptr) continue;
-
-				if (LinkedTo->GetOwningNode() == nullptr) continue;
-
-				UEdGraphNode* ConnectedNode = LinkedTo->GetOwningNode();
-
-				if (!ConnectedNode) continue;
-
-				UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
-
-				if (!CastedGraphNode) continue;
-
-				CastedGraphNode->AllocateReferringNodeInstancesOnConnection(CastedNode->TrueNode);
+				if (UJointEdGraphNode* CastedGraphNode = CastPinOwnerToJointEdGraphNode(LinkedTo))
+				{
+					CastedGraphNode->AllocateReferringNodeInstancesOnConnection(CastedNode->TrueNode, LinkedTo);
+				}
 			}
 		}
 		else if (FoundPin->PinName == "False")
 		{
-			for (const UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
+			for (UEdGraphPin* LinkedTo : FoundPin->LinkedTo)
 			{
-				if (LinkedTo == nullptr) continue;
-
-				if (LinkedTo->GetOwningNode() == nullptr) continue;
-
-				UEdGraphNode* ConnectedNode = LinkedTo->GetOwningNode();
-
-				if (!ConnectedNode) continue;
-
-				UJointEdGraphNode* CastedGraphNode = Cast<UJointEdGraphNode>(ConnectedNode);
-
-				if (!CastedGraphNode) continue;
-
-				CastedGraphNode->AllocateReferringNodeInstancesOnConnection(CastedNode->FalseNode);
+				if (UJointEdGraphNode* CastedGraphNode = CastPinOwnerToJointEdGraphNode(LinkedTo))
+				{
+					CastedGraphNode->AllocateReferringNodeInstancesOnConnection(CastedNode->FalseNode, LinkedTo);
+				}
 			}
 		}
 	}
