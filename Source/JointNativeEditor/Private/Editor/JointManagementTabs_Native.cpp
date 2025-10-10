@@ -7,6 +7,7 @@
 #include "Widgets/Docking/SDockTab.h"
 
 #include "Widgets/Layout/SScrollBox.h"
+#include "Widgets/Text/STextBlock.h"
 
 #define LOCTEXT_NAMESPACE "FJointManagementTab_JointNativeUtility"
 

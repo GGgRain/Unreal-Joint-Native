@@ -6,6 +6,7 @@
 #include "ICUTransliteratorWrapper.h"
 #include "SceneView.h"
 #include "Component/DialogueParticipantComponent.h"
+#include "Engine/GameViewportClient.h"
 #include "Engine/LocalPlayer.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/UObjectIterator.h"

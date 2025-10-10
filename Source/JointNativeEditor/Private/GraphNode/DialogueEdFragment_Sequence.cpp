@@ -7,6 +7,7 @@
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Sequence.h"
 #include "Widgets/Images/SImage.h"
+#include "Widgets/Layout/SBox.h"
 
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Random"

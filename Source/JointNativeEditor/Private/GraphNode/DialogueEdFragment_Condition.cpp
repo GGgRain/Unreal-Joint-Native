@@ -10,6 +10,7 @@
 #include "JointVersionComparison.h"
 #include "Components/HorizontalBox.h"
 #include "Widgets/Images/SImage.h"
+#include "Widgets/Layout/SBox.h"
 
 
 #define LOCTEXT_NAMESPACE "UDialogueEdFragment_Condition"

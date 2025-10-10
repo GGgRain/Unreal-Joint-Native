@@ -28,5 +28,3 @@ public:
 	
 };
 
-IMPLEMENT_MODULE(FJointNativeEditorModule, JointNativeEditor)
-

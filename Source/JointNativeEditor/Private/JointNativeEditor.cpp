@@ -3,8 +3,10 @@
 #include "JointNativeEditor.h"
 
 #include "JointEditor.h"
+#include "PropertyEditorModule.h"
 #include "Editor/JointManagementTabs_Native.h"
 #include "Editor/Management/JointManagement.h"
+#include "Modules/ModuleManager.h"
 #include "Node/DF_SpeakerAndListener.h"
 
 #define LOCTEXT_NAMESPACE "JointNativeEditor"
@@ -45,5 +47,7 @@ bool FJointNativeEditorModule::SupportsDynamicReloading()
 {
 	return true;
 }
+
+IMPLEMENT_MODULE(FJointNativeEditorModule, JointNativeEditor)
 
 #undef LOCTEXT_NAMESPACE
