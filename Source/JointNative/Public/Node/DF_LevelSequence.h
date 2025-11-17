@@ -14,7 +14,7 @@ class ULevelSequence;
 /**
  * Level Sequence node is a node that spawns a level sequence actor when it is played.
  */
-UCLASS(Category = "Joint Native|C++|Sequence", Hidden, meta=(DeprecatedNode, DeprecationMessage="Deprecated on Joint Native 1.2.0. Use the blueprint version of it instead."))
+UCLASS(Category = "Joint Native|Sequence", Hidden, meta=(DeprecatedNode, DeprecationMessage="Deprecated on Joint Native 1.2.0. Use the blueprint version of it instead."))
 class JOINTNATIVE_API UDF_LevelSequence: public UJointFragment
 {
 	GENERATED_BODY()
@@ -45,7 +45,7 @@ public:
 public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Data", Transient)
-	ALevelSequenceActor* CreatedLevelSequenceActor = nullptr;
+	TObjectPtr<ALevelSequenceActor> CreatedLevelSequenceActor = nullptr;
 
 public:
 	

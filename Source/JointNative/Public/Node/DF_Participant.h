@@ -13,7 +13,7 @@ class UDialogueParticipantComponent;
  * You can access the participant with this node.
  * This node can be used in various situation when you need to get the reference of the participant in the graph.
  */
-UCLASS(Category = "Joint Native|C++|Participant")
+UCLASS(Category = "Joint Native|Participant")
 class JOINTNATIVE_API UDF_Participant: public UJointFragment
 {
 	GENERATED_BODY()
@@ -36,7 +36,7 @@ public:
 	 * If this value was nullptr, then it will try to search it on the world at runtime.
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Participant Reference", Replicated)
-	UDialogueParticipantComponent* ParticipantComponentInstance = nullptr;
+	TObjectPtr<UDialogueParticipantComponent> ParticipantComponentInstance = nullptr;
 
 	
 	/**

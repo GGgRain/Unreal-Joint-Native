@@ -3,14 +3,13 @@
 
 #include "GraphNode/DialogueEdFragment_SpeakerAndListener.h"
 
-#include "IPropertyTable.h"
-#include "ISinglePropertyView.h"
 #include "Editor/Slate/GraphNode/JointGraphNodeSharedSlates.h"
 #include "Editor/Slate/GraphNode/SJointGraphNodeBase.h"
 #include "Editor/Style/JointEditorStyle.h"
 #include "Node/DF_Participant.h"
 #include "Node/DF_SpeakerAndListener.h"
 
+#include "JointVersionComparison.h"
 
 #include "Widgets/Images/SImage.h"
 #include "Widgets/Layout/SBox.h"
@@ -171,7 +170,12 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 			[
 				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)
-				.GraphContextObject(this)
+#if JOINT_VERSION_OLDER_THAN(2,11,0)
+				.OwnerGraphNode(this)
+#else
+				.StructureOwnerEdNode(this)
+				.PickingTargetJointManager(this->GetJointManager())
+#endif
 				.DisplayName(DisplayText_Attr)
 				.PointerToStructure(&Listener)
 				.bShouldShowDisplayName(true)
@@ -202,7 +206,12 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 			[
 				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)
-				.GraphContextObject(this)
+#if JOINT_VERSION_OLDER_THAN(2,11,0)
+				.OwnerGraphNode(this)
+#else
+				.StructureOwnerEdNode(this)
+				.PickingTargetJointManager(this->GetJointManager())
+#endif
 				.DisplayName(DisplayText_Attr)
 				.PointerToStructure(&Speaker)
 				.bShouldShowDisplayName(true)

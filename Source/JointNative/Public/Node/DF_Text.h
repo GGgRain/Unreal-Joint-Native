@@ -65,7 +65,7 @@ public:
  * A fragment that contains a text.
  * Can be used in multiple occasion.
  */
-UCLASS(Category = "Joint Native|C++|Text")
+UCLASS(Category = "Joint Native|Text")
 class JOINTNATIVE_API UDF_Text: public UJointFragment, public IJN_Text_Interface
 {
 	GENERATED_BODY()

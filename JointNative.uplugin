@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
-	"Version": 24,
-	"VersionName": "1.14.0",
+	"Version": 25,
+	"VersionName": "1.15.0",
 	"FriendlyName": "Joint Native",
-	"Description": "The basic contents for Joint, including nodes, widgets, Use-cases and samples for various project styles.",
+	"Description": "Official Extension Plugin for Joint - for Highly Customizable Advanced Narrative System",
 	"Category": "Conversation",
 	"CreatedBy": "DevGrain",
 	"CreatedByURL": "https://github.com/GGgRain",
@@ -33,6 +33,10 @@
 		},
 		{
 			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
 			"Enabled": true
 		}
 	]

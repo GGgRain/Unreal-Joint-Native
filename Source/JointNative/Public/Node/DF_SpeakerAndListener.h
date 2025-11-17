@@ -51,7 +51,7 @@ public:
  * A default implementation of the speakers and listeners in the dialogue node.
  * Useful when we have to display which participants are involved in the conversation.
  */
-UCLASS(Category = "Joint Native|C++|Participant", DisplayName="Speaker And Listener")
+UCLASS(Category = "Joint Native|Participant", DisplayName="Speaker And Listener")
 class JOINTNATIVE_API UDF_SpeakerAndListener: public UJointFragment, public IJN_SpeakerAndListener_Interface
 {
 	GENERATED_BODY()

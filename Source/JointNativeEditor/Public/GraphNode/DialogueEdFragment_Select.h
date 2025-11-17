@@ -24,6 +24,8 @@ public:
 	virtual TSubclassOf<UJointNodeBase> SupportedNodeClass() override;
 	
 	FPinConnectionResponse CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const override;
+
+	FPinConnectionResponse CanAttachThisAtParentNode(const UJointEdGraphNode* InParentNode) const override;
 	
 public:
 	

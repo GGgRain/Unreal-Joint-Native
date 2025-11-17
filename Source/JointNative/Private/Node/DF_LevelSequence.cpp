@@ -42,8 +42,9 @@ void UDF_LevelSequence::ExecuteAction()
 {
 	if (SequenceToPlay.Get())
 	{
-		ULevelSequencePlayer::CreateLevelSequencePlayer(this, SequenceToPlay.Get(), PlaybackSettings,
-		                                                CreatedLevelSequenceActor);
+		ALevelSequenceActor* TempActor = nullptr;
+		ULevelSequencePlayer::CreateLevelSequencePlayer(this, SequenceToPlay.Get(), PlaybackSettings,TempActor);
+		CreatedLevelSequenceActor = TempActor;
 	}
 
 	RequestNodeEndPlay();

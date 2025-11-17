@@ -21,7 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDFSelectSelectionChanged, const UD
  * This node will be depreciated eventually and will be replaced with BP version, but not today.
  */
 
-UCLASS(Category = "Joint Native|C++|Flow")
+UCLASS(Category = "Joint Native|Flow")
 class JOINTNATIVE_API UDF_Select: public UJointFragment
 {
 	GENERATED_BODY()
@@ -47,7 +47,7 @@ public:
 public:
 	
 	UPROPERTY(AdvancedDisplay, VisibleAnywhere, BlueprintReadOnly, Category = "Select")
-	TArray<UJointNodeBase*> NextNodes;
+	TArray<TObjectPtr<UJointNodeBase>> NextNodes;
 
 private:
 

@@ -83,10 +83,33 @@ FPinConnectionResponse UDialogueEdFragment_Select::CanAttachSubNodeOnThis(const 
 	{
 		return FPinConnectionResponse(CONNECT_RESPONSE_DISALLOW,
 		                              LOCTEXT("AllowedAttachmentMessage",
-		                                      "Context node can not have another context node as child."));
+		                                      "Select node can not have another Select node as a child."));
 	}
 
 	return Super::CanAttachSubNodeOnThis(InSubNode);
+}
+
+FPinConnectionResponse UDialogueEdFragment_Select::CanAttachThisAtParentNode(const UJointEdGraphNode* InParentNode) const
+{
+	if (UJointNodeBase* InNodeInstance = InParentNode->GetCastedNodeInstance())
+	{
+		// check if the parent branch tree has select node already
+
+		UJointNodeBase* CurrentNode = InNodeInstance;
+		while (CurrentNode != nullptr && CurrentNode != InNodeInstance->GetParentmostNode())
+		{
+			if (UDF_Select* CastedSelectNode = Cast<UDF_Select>(CurrentNode))
+			{
+				return FPinConnectionResponse(CONNECT_RESPONSE_DISALLOW,
+				                              LOCTEXT("AllowedAttachmentMessage",
+				                                      "Select node can not be placed under another Select node."));
+			}
+
+			CurrentNode = CurrentNode->GetParentNode();
+		}
+	}
+
+	return Super::CanAttachThisAtParentNode(InParentNode);
 }
 
 #undef LOCTEXT_NAMESPACE

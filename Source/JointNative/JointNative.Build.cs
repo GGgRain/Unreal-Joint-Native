@@ -18,7 +18,7 @@ public class JointNative : ModuleRules
 				// ... add public include paths required here ...
 
 			}
-			);
+		);
 			
 		
 		PublicDependencyModuleNames.AddRange(
@@ -35,7 +35,7 @@ public class JointNative : ModuleRules
 				"MovieScene"
 				// ... add other public dependencies that you statically link with here ...
 			}
-			);
+		);
 			
 		
 		PrivateDependencyModuleNames.AddRange(
@@ -55,7 +55,7 @@ public class JointNative : ModuleRules
 				"GameplayTasks",
 				"GameplayAbilities",
 			}
-			);
+		);
 		
 		
 		DynamicallyLoadedModuleNames.AddRange(
@@ -63,7 +63,7 @@ public class JointNative : ModuleRules
 			{
 				// ... add any modules that your module loads dynamically here ...
 			}
-			);
+		);
 
 		if (Target.bCompileICU)
 		{

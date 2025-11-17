@@ -2,12 +2,16 @@
 
 #include "JointNativeEditor.h"
 
+#include "ISequencerModule.h"
 #include "JointEditor.h"
 #include "PropertyEditorModule.h"
 #include "Editor/JointManagementTabs_Native.h"
 #include "Editor/Management/JointManagement.h"
-#include "Modules/ModuleManager.h"
+#include "Editor/Sequencer/JointMovieTrackEditor.h"
 #include "Node/DF_SpeakerAndListener.h"
+
+#include "SequencerChannelInterface.h"
+
 
 #define LOCTEXT_NAMESPACE "JointNativeEditor"
 
@@ -20,7 +24,6 @@ void FJointNativeEditorModule::StartupModule()
 		EditorModule->JointManagementTabHandler->AddSubTab(FJointManagementTab_JointNativeUtility::MakeInstance());
 	}
 	
-
 	RegisterClassLayout();
 }
 
@@ -41,7 +44,6 @@ void FJointNativeEditorModule::UnregisterClassLayout()
 {
 	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 }
-
 
 bool FJointNativeEditorModule::SupportsDynamicReloading()
 {
