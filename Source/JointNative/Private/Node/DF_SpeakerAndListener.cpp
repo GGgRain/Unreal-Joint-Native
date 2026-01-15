@@ -29,6 +29,36 @@ UDF_SpeakerAndListener::UDF_SpeakerAndListener()
 	
 }
 
+TArray<UDialogueParticipantComponent*> UDF_SpeakerAndListener::GetSpeakerParticipantComponents() const
+{
+	TArray<UDialogueParticipantComponent*> OutArray;
+	TArray<UDF_Participant*> Participants = GetSpeakerParticipants();
+	
+	for (UDF_Participant*& Participant : Participants)
+	{
+		if(Participant == nullptr) continue;
+		
+		OutArray.Add(Participant->GetParticipantComponent());
+	}
+	
+	return OutArray;
+}
+
+TArray<UDialogueParticipantComponent*> UDF_SpeakerAndListener::GetListenerParticipantComponents() const
+{
+	TArray<UDialogueParticipantComponent*> OutArray;
+	TArray<UDF_Participant*> Participants = GetListenerParticipants();
+	
+	for (UDF_Participant*& Participant : Participants)
+	{
+		if(Participant == nullptr) continue;
+		
+		OutArray.Add(Participant->GetParticipantComponent());
+	}
+	
+	return OutArray;
+}
+
 TArray<UDF_Participant*> UDF_SpeakerAndListener::GetSpeakerParticipants() const
 {
 	TArray<UDF_Participant*> OutArray;

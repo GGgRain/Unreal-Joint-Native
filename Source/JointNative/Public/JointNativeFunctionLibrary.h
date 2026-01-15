@@ -64,8 +64,7 @@ public:
 	);
 
 public:
-
-
+	
 	/**
 	 * Create a transliterator with the provided destination and start culture.
 	 * It will transliterate strings from the start culture to most appropriate characters according to its pronounce in the destination culture. (e.g. 안녕하세요 -> annyeonghaseyo)

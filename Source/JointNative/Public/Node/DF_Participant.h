@@ -37,7 +37,6 @@ public:
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Participant Reference", Replicated)
 	TObjectPtr<UDialogueParticipantComponent> ParticipantComponentInstance = nullptr;
-
 	
 	/**
 	 * Whether to allow collecting the participant the ParticipantTag refers to.

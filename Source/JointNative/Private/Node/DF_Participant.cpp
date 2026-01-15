@@ -4,6 +4,7 @@
 #include "Node/DF_Participant.h"
 
 #include "JointNativeFunctionLibrary.h"
+#include "Component/DialogueParticipantComponent.h"
 #include "Engine/World.h"
 #include "Net/UnrealNetwork.h"
 

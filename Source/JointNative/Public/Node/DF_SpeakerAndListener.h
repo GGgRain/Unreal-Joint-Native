@@ -15,6 +15,7 @@
  * TODO: We aren't sure what else can be implemented as interfaces. Please let us know if you have any ideas, or suggestions!
  */
 
+class UDialogueParticipantComponent;
 class UDF_Participant;
 
 UINTERFACE(Blueprintable)
@@ -73,6 +74,13 @@ public:
 	TArray<FJointNodePointer> Listeners;
 
 public:
+	
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<UDialogueParticipantComponent*> GetSpeakerParticipantComponents() const;
+
+	UFUNCTION(BlueprintPure, Category="Participant")
+	TArray<UDialogueParticipantComponent*> GetListenerParticipantComponents() const;
+	
 
 	UFUNCTION(BlueprintPure, Category="Participant")
 	TArray<UDF_Participant*> GetSpeakerParticipants() const;
@@ -80,8 +88,6 @@ public:
 	UFUNCTION(BlueprintPure, Category="Participant")
 	TArray<UDF_Participant*> GetListenerParticipants() const;
 	
-public:
-
 	UFUNCTION(BlueprintPure, Category="Participant")
 	TArray<FJointNodePointer> GetSpeakers();
 
