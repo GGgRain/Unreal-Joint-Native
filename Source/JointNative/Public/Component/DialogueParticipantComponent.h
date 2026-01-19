@@ -50,8 +50,76 @@ public:
 
 	/**
 	 * Module items that will be attached to the Dialogue Participant Modules.
+	 * Joint Native 1.16: Now supports replication.
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SpeechBubble")
-	TArray<TObjectPtr<class UDialogueParticipantModuleItem>> ParticipantModules;
+	TArray<TObjectPtr<UDialogueParticipantModuleItem>> ParticipantModules;
+	
+	
+public:
+	
+	/**
+	 * Get a participant module by class.
+	 * @param ModuleClass The module class to search.
+	 */
+	UFUNCTION(BlueprintPure, Category="Dialogue Participant Component", meta=(DeterminesOutputType="ModuleClass"))
+	UDialogueParticipantModuleItem* GetParticipantModuleByClass(TSubclassOf<UDialogueParticipantModuleItem> ModuleClass) const;
+
+	/**
+	 * Get all participant modules by class.
+	 * @param ModuleClass The module class to search.
+	 */
+	UFUNCTION(BlueprintPure, Category="Dialogue Participant Component", meta=(DeterminesOutputType="ModuleClass"))
+	TArray<UDialogueParticipantModuleItem*> GetParticipantModulesByClass(TSubclassOf<UDialogueParticipantModuleItem> ModuleClass) const;
+	
+	/**
+	 * Add a new participant module by class. (it will not be replicated if you add it on the client side. You have to add it on the server side to replicate it properly)
+	 * @param ModuleClass The module class to add.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Dialogue Participant Component", meta=(DeterminesOutputType="ModuleClass"))
+	UDialogueParticipantModuleItem* AddParticipantModuleByClass(TSubclassOf<UDialogueParticipantModuleItem> ModuleClass);
+
+	/**
+	 * Remove a participant module.
+	 * @param ModuleToRemove The module instance to remove.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Dialogue Participant Component")
+	void RemoveParticipantModule(UDialogueParticipantModuleItem* ModuleToRemove);
+	
+public:
+
+	/**
+	 * whether to start replication of the participant modules on the initialization.
+	 */
+	UPROPERTY(BlueprintReadOnly, Category="Dialogue Participant Component")
+	bool bShouldStartReplicatesOnInitialization = true;
+	
+private:
+	
+	/**
+	 * Cached Joint nodes for the replication.
+	 */
+	UPROPERTY(Transient, Replicated, ReplicatedUsing = OnRep_CachedParticipantModulesForNetworking)
+	TArray<TObjectPtr<UDialogueParticipantModuleItem>> CachedParticipantModulesForNetworking;
+
+	UFUNCTION()
+	void OnRep_CachedParticipantModulesForNetworking(const TArray<UDialogueParticipantModuleItem*>& PreviousCache);
+	
+private:
+	
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	virtual bool ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, FReplicationFlags* RepFlags) override;
+
+private:
+
+	//Don't call this in out of initialization.
+	void CacheNodesForNetworking();
+
+public:
+
+	void AddModuleForNetworking(class UDialogueParticipantModuleItem* InModule);
+	
+	void RemoveModuleForNetworking(class UDialogueParticipantModuleItem* InModule);
 	
 };

@@ -27,6 +27,13 @@ UDF_Sequence::UDF_Sequence()
 
 void UDF_Sequence::SelectNodeAsPlayingNode(UJointNodeBase* SubNode)
 {
+	//sanity check
+	if (SubNode == nullptr) return;
+	
+	if (IsNodeEndedPlay() || IsNodePending()) return;
+	
+	//if it has the binding, remove it first to avoid invocation list corruption.
+	SubNode->OnJointNodeMarkedAsPendingDelegate.RemoveAll(this);
 	SubNode->OnJointNodeMarkedAsPendingDelegate.AddDynamic(this, &UDF_Sequence::OnSubNodePending);
 
 	GetHostingJointInstance()->RequestNodeBeginPlay(SubNode);
