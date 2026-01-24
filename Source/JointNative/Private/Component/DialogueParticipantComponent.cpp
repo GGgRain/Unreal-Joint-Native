@@ -3,6 +3,7 @@
 
 #include "Component/DialogueParticipantComponent.h"
 
+#include "GameFramework/Actor.h"
 #include "Component/DialogueParticipantModuleItem.h"
 #include "Engine/ActorChannel.h"
 #include "Misc/EngineVersionComparison.h"

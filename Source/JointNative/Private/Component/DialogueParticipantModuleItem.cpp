@@ -4,6 +4,10 @@
 #include "Component/DialogueParticipantModuleItem.h"
 
 #include "Component/DialogueParticipantComponent.h"
+#include "GameFramework/PlayerController.h"
+#include "Engine/Engine.h"
+#include "Engine/NetDriver.h"
+#include "Engine/BlueprintGeneratedClass.h"
 #include "Kismet/GameplayStatics.h"
 
 UDialogueParticipantModuleItem::UDialogueParticipantModuleItem()
