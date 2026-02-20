@@ -46,6 +46,6 @@ public:
 	/**
 	 * A box that holds the style representing slate.
 	 */
-	TSharedPtr<SVerticalBox> StyleBox;
+	TWeakPtr<SVerticalBox> StyleBox;
 	
 };

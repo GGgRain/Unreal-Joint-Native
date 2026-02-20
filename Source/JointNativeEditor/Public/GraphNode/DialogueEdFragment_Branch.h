@@ -39,8 +39,4 @@ public:
 
 	virtual FPinConnectionResponse CanAttachSubNodeOnThis(const UJointEdGraphNode* InSubNode) const override;
 
-public:
-
-	TSharedPtr<SScrollBox> ConditionList;
-
 };

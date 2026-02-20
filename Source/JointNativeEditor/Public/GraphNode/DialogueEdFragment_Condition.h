@@ -29,10 +29,5 @@ public:
 public:
 	
 	virtual void ModifyGraphNodeSlate() override;
-
-	
-public:
-
-	TSharedPtr<SVerticalBox> ConditionInstanceBox;
 	
 };

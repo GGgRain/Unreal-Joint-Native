@@ -22,16 +22,15 @@ public:
 	virtual void ModifyGraphNodeSlate() override;
 	
 	virtual void OnNodeInstancePropertyChanged(const FPropertyChangedEvent& PropertyChangedEvent, const FString& PropertyName) override;
-	
+
 public:
 	
 	void UpdateSlate();
 
 public:
 
-	TSharedPtr<SScrollBox> SpeakersBox;
-	
-	TSharedPtr<SScrollBox> ListenersBox;
+	TWeakPtr<SScrollBox> SpeakersBox;
+	TWeakPtr<SScrollBox> ListenersBox;
 
 public:
 	

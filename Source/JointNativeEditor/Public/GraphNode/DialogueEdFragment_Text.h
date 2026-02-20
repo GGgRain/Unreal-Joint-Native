@@ -35,9 +35,8 @@ public:
 
 public:
 
-	TSharedPtr<SVerticalBox> ContextTextEditorContainer;
-
-	TSharedPtr<SContextTextEditor> ContextTextEditor;
+	TWeakPtr<SVerticalBox> ContextTextEditorContainer;
+	TWeakPtr<SContextTextEditor> ContextTextEditor;
 
 public:
 

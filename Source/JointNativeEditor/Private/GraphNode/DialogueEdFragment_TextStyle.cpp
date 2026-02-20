@@ -40,14 +40,12 @@ void UDialogueEdFragment_TextStyle::ModifyGraphNodeSlate()
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
-		StyleBox = SNew(SVerticalBox)
-			.Visibility(EVisibility::SelfHitTestInvisible);
-
 		NodeSlate->CenterContentBox->AddSlot()
 			.HAlign(HAlign_Fill)
 			.Padding(FJointEditorStyle::Margin_Normal)
 			[
-				StyleBox.ToSharedRef()
+				SAssignNew(StyleBox, SVerticalBox)
+				.Visibility(EVisibility::SelfHitTestInvisible)
 			];
 
 		UpdateSlate();
@@ -136,9 +134,9 @@ void UDialogueEdFragment_TextStyle::UpdateSlate()
 	
 		VOLT_PLAY_ANIM(ConditionSlate, Anim);
 	
-		StyleBox->ClearChildren();
+		StyleBox.Pin()->ClearChildren();
 
-		StyleBox->AddSlot()
+		StyleBox.Pin()->AddSlot()
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			[

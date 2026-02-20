@@ -43,6 +43,6 @@ public:
 	/**
 	 * A box that holds the condition representing slate.
 	 */
-	TSharedPtr<SVerticalBox> ParticipantBox;
+	TWeakPtr<SVerticalBox> ParticipantBox;
 	
 };

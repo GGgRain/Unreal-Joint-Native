@@ -47,13 +47,12 @@ void UDialogueEdFragment_Participant::ModifyGraphNodeSlate()
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
-		ParticipantBox = SNew(SVerticalBox).Visibility(EVisibility::SelfHitTestInvisible);
-
 		NodeSlate->CenterContentBox->AddSlot()
 			.HAlign(HAlign_Fill)
 			.Padding(FJointEditorStyle::Margin_Normal)
 			[
-				ParticipantBox.ToSharedRef()
+				SAssignNew(ParticipantBox,SVerticalBox)
+				.Visibility(EVisibility::SelfHitTestInvisible)
 			];
 
 		UpdateSlate();
@@ -142,9 +141,9 @@ void UDialogueEdFragment_Participant::UpdateSlate()
 		VOLT_PLAY_ANIM(ConditionSlate, Anim);
 
 
-		ParticipantBox->ClearChildren();
+		ParticipantBox.Pin()->ClearChildren();
 
-		ParticipantBox->AddSlot()
+		ParticipantBox.Pin()->AddSlot()
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			[

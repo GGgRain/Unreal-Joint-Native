@@ -17,7 +17,7 @@ UDialogueEdFragment_Text::UDialogueEdFragment_Text()
 	NodeWidth = 0;
 	NodeHeight = 0;
 
-	bIsNodeResizeable = false;
+	DefaultEdNodeSetting.bIsNodeResizeable = false;
 }
 
 
@@ -54,7 +54,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 
 	if(NodeSlate && NodeSlate->CenterContentBox)
 	{
-		ContextTextEditorContainer->ClearChildren();
+		ContextTextEditorContainer.Pin()->ClearChildren();
 
 		
 		UDF_Text* CastedNode = GetCastedNodeInstance<UDF_Text>();
@@ -89,7 +89,7 @@ void UDialogueEdFragment_Text::UpdateSlate()
 			
 		}));
 
-		ContextTextEditorContainer->AddSlot()
+		ContextTextEditorContainer.Pin()->AddSlot()
 			.AutoHeight()
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)

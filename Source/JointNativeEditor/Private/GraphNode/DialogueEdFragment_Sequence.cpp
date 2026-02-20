@@ -14,7 +14,7 @@
 
 UDialogueEdFragment_Sequence::UDialogueEdFragment_Sequence()
 {
-	bIsNodeResizeable = false;
+	DefaultEdNodeSetting.bIsNodeResizeable = false;
 }
 
 TSubclassOf<UJointNodeBase> UDialogueEdFragment_Sequence::SupportedNodeClass()

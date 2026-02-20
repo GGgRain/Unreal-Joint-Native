@@ -140,8 +140,8 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 
 	if (NodeSlate && NodeSlate->CenterContentBox)
 	{
-		SpeakersBox->ClearChildren();
-		ListenersBox->ClearChildren();
+		SpeakersBox.Pin()->ClearChildren();
+		SpeakersBox.Pin()->ClearChildren();
 
 		UDF_SpeakerAndListener* SpeakerAndListener = GetCastedNodeInstance<UDF_SpeakerAndListener>();
 
@@ -166,7 +166,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 						return FText::GetEmpty();
 					}));
 
-			ListenersBox->AddSlot()
+			SpeakersBox.Pin()->AddSlot()
 			[
 				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)
@@ -202,7 +202,7 @@ void UDialogueEdFragment_SpeakerAndListener::UpdateSlate()
 						return FText::GetEmpty();
 					}));
 
-			SpeakersBox->AddSlot()
+			SpeakersBox.Pin()->AddSlot()
 			[
 				SNew(SJointNodePointerSlate)
 				.Visibility(EVisibility::SelfHitTestInvisible)

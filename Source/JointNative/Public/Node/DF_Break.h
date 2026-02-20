@@ -13,9 +13,9 @@
  * 
  * If you set bUseBreakTo to true, This node will provide BreakTo nodes as the next nodes when broken. It can be used to create branching paths in the Joint flow.
  * Otherwise, it will not provide any next nodes, which means this break node only breaks the current playback without affecting the next nodes.
- * (TIP: Try attaching it on the top of list so that it will be prioritized when breaking.)
+ * @note Try attaching it on the top of list so that it will be prioritized when breaking.
  * 
- * * This node should not be a manager fragment.
+ * @important This node should not be a manager fragment.
  */
 UCLASS(Category = "Joint Native|Flow")
 class JOINTNATIVE_API UDF_Break : public UJointFragment
