@@ -54,9 +54,9 @@ UDF_Dummy::UDF_Dummy()
 	{
 		EdNodeSetting.bUseCustomOuterNodeBodyImageBrush = true;
 		EdNodeSetting.OuterNodeBodyImageBrush.SetResourceObject(NodeBodyBrush.Object);
-		EdNodeSetting.OuterNodeBodyImageBrush.ImageSize = FVector2D(12.0, 12.0);
+		EdNodeSetting.OuterNodeBodyImageBrush.ImageSize = FVector2D(12.0f, 12.0f);
 		EdNodeSetting.OuterNodeBodyImageBrush.DrawAs = ESlateBrushDrawType::Box;
-		EdNodeSetting.OuterNodeBodyImageBrush.Margin = FMargin(0.5);
+		EdNodeSetting.OuterNodeBodyImageBrush.Margin = FMargin(0.5f);
 	}
 	
 
@@ -71,8 +71,8 @@ UDF_Dummy::UDF_Dummy()
 
 	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
 	EdNodeSetting.bUseIconicColorForNodeBodyOnStow = false;
-	EdNodeSetting.NodeBodyColor = FLinearColor(0.001, 0.001, 0.001, 0.2);
-	EdNodeSetting.NodeIconicColor = FColor(29, 130, 126, 125);
+	EdNodeSetting.NodeBodyColor = FLinearColor(0.001f, 0.001f, 0.001f, 0.2f);
+	EdNodeSetting.NodeIconicColor = FColor(29.f, 130.f, 126.f, 125.f);
 	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Minimal_Content;
 	
 #endif

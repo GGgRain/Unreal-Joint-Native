@@ -19,7 +19,7 @@ UDF_Select::UDF_Select()
 #else
 
 	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
-	EdNodeSetting.NodeBodyColor = FLinearColor(0.4f * 0.7, 0.2f * 0.7, 0.5f * 0.7, 0.400000);
+	EdNodeSetting.NodeBodyColor = FLinearColor(0.4f * 0.7f, 0.2f * 0.7f, 0.5f * 0.7f, 0.4f);
 	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	
 #endif

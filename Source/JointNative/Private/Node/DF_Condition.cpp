@@ -26,7 +26,7 @@ UDF_Condition::UDF_Condition()
 	EdNodeSetting.bAllowDisplayClassFriendlyNameText = true;
 	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
-	EdNodeSetting.NodeBodyColor = FLinearColor(0.078125, 0.001330,0.013824, 0.700000);
+	EdNodeSetting.NodeBodyColor = FLinearColor(0.078125f, 0.001330f,0.013824f, 0.7f);
 	
 #endif
 

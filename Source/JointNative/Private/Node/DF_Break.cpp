@@ -21,15 +21,15 @@ UDF_Break::UDF_Break()
 #if JOINT_VERSION_OLDER_THAN(2, 9, 0)
 	
 	bUseSpecifiedGraphNodeBodyColor = true;
-	NodeBodyColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.400000);
-	NodeIconicColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.400000);
+	NodeBodyColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.4f);
+	NodeIconicColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.4f);
 	DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	
 #else
 
 	EdNodeSetting.bUseSpecifiedGraphNodeBodyColor = true;
-	EdNodeSetting.NodeBodyColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.400000);
-	EdNodeSetting.NodeIconicColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.400000);
+	EdNodeSetting.NodeBodyColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.4f);
+	EdNodeSetting.NodeIconicColor = FLinearColor(29.f / 255.f, 44.f / 255.f, 46.f / 255.f, 0.4f);
 	EdNodeSetting.DefaultEdSlateDetailLevel = EJointEdSlateDetailLevel::SlateDetailLevel_Stow;
 	
 #endif
