@@ -28,6 +28,8 @@ public class JointNativeEditor : ModuleRules
 			"VoltCore",
 			"Volt",
 
+			"GameplayTags",
+
 			"AIGraph",
 			"PropertyEditor",
 

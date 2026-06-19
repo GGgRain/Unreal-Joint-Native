@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 31,
-	"VersionName": "1.18.1",
+	"Version": 32,
+	"VersionName": "1.18.2",
 	"FriendlyName": "Joint Native",
 	"Description": "Official Extension Plugin for Joint - for Highly Customizable Advanced Narrative System",
 	"Category": "Conversation",
